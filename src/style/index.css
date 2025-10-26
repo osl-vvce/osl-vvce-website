@@ -313,3 +313,12 @@ h6 {
 #mdx a {
     text-decoration: underline;
 }
+
+
+h1 {
+    color: #072540 !important; /* Heading color */
+}
+
+p.text-color-2 {
+    color: #FF8AE2 !important; /* Sub-heading color */
+}
