@@ -18,13 +18,32 @@ export const ItemMember = ({ data }) => {
                     onBlur={() => changeFocused(false)}
                 >
                     <div className="image">
-                        <Img
-                            fluid={
-                                data.frontmatter.avatar.childImageSharp.fluid
-                            }
-                            alt={data.frontmatter.fullname}
-                            className="w-full"
-                        />
+                        {data.frontmatter.avatar?.childImageSharp?.fluid ? (
+                            <Img
+                                fluid={
+                                    data.frontmatter.avatar.childImageSharp
+                                        .fluid
+                                }
+                                alt={data.frontmatter.fullname}
+                                className="w-full"
+                            />
+                        ) : data.frontmatter.avatar?.publicURL ? (
+                            <img
+                                src={data.frontmatter.avatar.publicURL}
+                                alt={data.frontmatter.fullname}
+                                className="w-full"
+                            />
+                        ) : data.frontmatter.avatarStatic ? (
+                            <img
+                                src={data.frontmatter.avatarStatic}
+                                alt={data.frontmatter.fullname}
+                                className="w-full"
+                            />
+                        ) : (
+                            <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-color-3">
+                                No avatar
+                            </div>
+                        )}
                     </div>
                     <div className="p-4 py-3">
                         <h4 className="text-color-2 font-black text-2xl pt-1">

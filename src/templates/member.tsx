@@ -30,18 +30,38 @@ export default function member({ location, data }) {
             seo={{
                 title: data.mdx.frontmatter.fullname,
                 description: data.mdx.frontmatter.about,
-                image: data.mdx.frontmatter.avatar.publicURL,
+                image:
+                    data.mdx.frontmatter.avatar?.publicURL ||
+                    data.mdx.frontmatter.avatarStatic,
             }}
             location={location}
         >
             <div className="md:px-4 mt-12 py-6 md:w-1/3 mx-auto">
                 <div className="mx-auto relative">
-                    <Img
-                        className="rounded"
-                        fluid={
-                            data.mdx.frontmatter.avatar.childImageSharp.fluid
-                        }
-                    />
+                    {data.mdx.frontmatter.avatar?.childImageSharp?.fluid ? (
+                        <Img
+                            className="rounded"
+                            fluid={
+                                data.mdx.frontmatter.avatar.childImageSharp.fluid
+                            }
+                        />
+                    ) : data.mdx.frontmatter.avatar?.publicURL ? (
+                        <img
+                            className="rounded w-full"
+                            src={data.mdx.frontmatter.avatar.publicURL}
+                            alt={data.mdx.frontmatter.fullname}
+                        />
+                    ) : data.mdx.frontmatter.avatarStatic ? (
+                        <img
+                            className="rounded w-full"
+                            src={data.mdx.frontmatter.avatarStatic}
+                            alt={data.mdx.frontmatter.fullname}
+                        />
+                    ) : (
+                        <div className="rounded w-full h-64 bg-gray-200 flex items-center justify-center text-color-3">
+                            No avatar available
+                        </div>
+                    )}
                     <div className="relative w-full lg:w-3/4 md:w-11/12 sm:w-full p-6 box-border lg:box-content mx-auto bg-bg text-color-default blog-wall-content shadow-xl md:-mt-16 ">
                         <div className="p-3">
                             <h1 className="text-5xl font-bold text-primary text-center">
@@ -111,6 +131,7 @@ export const query = graphql`
                         id
                     }
                 }
+                avatarStatic
                 facebook
                 instagram
                 github

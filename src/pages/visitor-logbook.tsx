@@ -1,5 +1,6 @@
 // src/pages/visitor-logbook.tsx
 import React, { useState } from "react"
+import { Link } from "gatsby"
 import { createClient } from '@supabase/supabase-js'
 import { Helmet } from "react-helmet"
 import { WindowLocation } from "@reach/router"
@@ -104,6 +105,11 @@ const VisitorLogbook: React.FC<VisitorLogbookProps> = ({ location }) => {
                 <p className="logbook-subtitle">Please fill out the form to check in</p>
               </div>
             </div>
+          </div>
+          <div className="logbook-action-row">
+            <Link to="/visitor-logbook-logs" className="secondary-btn">
+              View all visitor logs
+            </Link>
           </div>
           <div className="logbook-form-container">
             <form className="visitor-form" onSubmit={handleSubmit}>

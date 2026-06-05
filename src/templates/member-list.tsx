@@ -47,7 +47,7 @@ export const query = graphql`
                 fields: { sourceName: { eq: "member" } }
                 frontmatter: { role: { in: ["Member", "Mentor", "Moderator"] } }
             }
-            sort: { order: DESC, fields: frontmatter___role }
+            sort: { order: DESC, fields: [frontmatter___role] }
         ) {
             edges {
                 node {
@@ -65,6 +65,7 @@ export const query = graphql`
                                 id
                             }
                         }
+                        avatarStatic
                     }
                     fields {
                         slug
@@ -77,7 +78,7 @@ export const query = graphql`
                 fields: { sourceName: { eq: "member" } }
                 frontmatter: { role: { eq: "Alumni" } }
             }
-            sort: { order: DESC, fields: frontmatter___batch }
+            sort: { order: DESC, fields: [frontmatter___batch] }
             limit: $limit
             skip: $skip
         ) {
@@ -97,6 +98,7 @@ export const query = graphql`
                                 id
                             }
                         }
+                        avatarStatic
                     }
                     fields {
                         slug
