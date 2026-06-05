@@ -12,14 +12,14 @@ export default function memberList({ data, pageContext, location }) {
     return (
         <Layout
             seo={{
-                title: "Member",
+                title: "Members",
             }}
             location={location}
         >
             <div className="container mx-auto py-12">
                 <div className="title py-12 text-center">
                     <h2 className="font-black text-5xl text-color-1">
-                        Members
+                        Alumini
                     </h2>
                 </div>
                 <div className="flex flex-wrap">{memberItems}</div>
