@@ -16,7 +16,7 @@ export default function memberList({ data, pageContext, location }) {
     return (
         <Layout
             seo={{
-                title: "Member",
+                title: "Members",
             }}
             location={location}
         >

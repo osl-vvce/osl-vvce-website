@@ -174,18 +174,27 @@ export default ({ data, location }) => {
                         Faculty Coordinators
                     </h3>
                 </div>
-                <div className="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-8">
-                    <div className="w-full text-center p-6 bg-bgalt rounded-lg shadow-lg border border-medium">
-                        <h4 className="text-2xl font-semibold mb-2 text-color-default">Dr. Chethana H T</h4>
-                        <h5 className="text-lg text-color-1 mb-2">Associate Professor</h5>
-                        <p className="text-sm text-color-2 mb-1">Faculty Coordinator</p>
-                        <p className="text-sm text-color-1">chethanaht@vvce.ac.in</p>
-                    </div>
-                    <div className="w-full text-center p-6 bg-bgalt rounded-lg shadow-lg border border-medium">
-                        <h4 className="text-2xl font-semibold mb-2 text-color-default">Prof. Lakshmi BS</h4>
-                        <h5 className="text-lg text-color-1 mb-2">Assistant Professor</h5>
-                        <p className="text-sm text-color-2 mb-1">Faculty Coordinator</p>
-                        <p className="text-sm text-color-1">lakshmi.bs@vvce.ac.in</p>
+                <div className="flex justify-center">
+                    <div className="w-full max-w-md p-6 bg-bgalt rounded-3xl shadow-lg border border-medium">
+                        <img
+                            src="/images/faculty/chethana-ht.jpg"
+                            alt="Dr. Chethana H T"
+                            className="mx-auto mb-6 h-48 w-48 rounded-lg object-cover border-2 border-primary"
+                        />
+                        <div className="text-center">
+                            <h4 className="text-2xl font-semibold mb-2 text-color-default">
+                                Dr. Chethana H T
+                            </h4>
+                            <h5 className="text-lg text-color-1 mb-2">
+                                Associate Professor
+                            </h5>
+                            <p className="text-sm text-color-2 mb-1">
+                                Faculty Coordinator
+                            </p>
+                            <p className="text-sm text-color-1">
+                                chethanaht@vvce.ac.in
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
