@@ -77,14 +77,20 @@ const List: React.FC<NavigationListProps> = ({
 }
 
 const ListItem = ({ data, active, liClassName }) => {
+    const isNew =
+        data.url === "/visitor-logbook" || data.url === "/suggestions"
+
     return (
         <li className={`${liClassName} ${active ? "active" : ""}`}>
             <Link
                 to={data.url}
                 title={data.name}
-                className="text-2xl lg:text-base text-color-2 focus:text-primary"
+                className={`text-2xl lg:text-base text-color-2 focus:text-primary ${
+                    isNew ? "new-nav-link" : ""
+                }`}
             >
                 <span>{data.name}</span>
+                {isNew && <span className="new-nav-tag">New</span>}
             </Link>
         </li>
     )

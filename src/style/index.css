@@ -37,6 +37,19 @@ p {
 .nav .nav-links li a {
     @apply inline-block p-1 relative z-10;
 }
+.new-nav-link {
+    @apply inline-flex flex-col items-center;
+}
+
+.nav .nav-links li a.new-nav-link {
+    @apply inline-flex flex-col items-center;
+}
+
+.new-nav-tag {
+    @apply mt-0 px-1 border border-primary text-primary font-bold rounded;
+    font-size: 0.6rem;
+    line-height: 1rem;
+}
 
 .nav .nav-links li:before {
     content: "";
