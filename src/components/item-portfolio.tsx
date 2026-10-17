@@ -66,30 +66,37 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
                                 transform: `translate(0px,${transform.current}px)`,
                             }}
                         >
-                            <Img
-                                fluid={
-                                    data.frontmatter.image.childImageSharp.fluid
-                                }
-                                alt={data.frontmatter.title}
-                            />
+                            <div className="rounded-2xl overflow-hidden spooky-card">
+                                <Img
+                                    fluid={
+                                        data.frontmatter.image.childImageSharp.fluid
+                                    }
+                                    alt={data.frontmatter.title}
+                                />
+                            </div>
                         </div>
                     </div>
-                    <div className="flex-1 flex md:px-4 lg:px-6 items-center">
+                    <div className="flex-1 flex md:px-6 lg:px-10 items-center">
                         <div
-                            className={`flex flex-1 flex-wrap  ${
+                            className={`flex flex-1 flex-wrap ${
                                 even ? "md:justify-end md:text-right" : ""
                             }`}
                         >
-                            <h3 className="text-color-1 text-5xl font-black to-up">
+                            <div className="w-full mb-2">
+                                <span className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase spooky-badge">
+                                    🎃 Open Source Project
+                                </span>
+                            </div>
+                            <h3 className="font-spooky text-color-1 text-4xl sm:text-5xl font-black to-up text-glow-orange w-full">
                                 {data.frontmatter.title}
                             </h3>
-                            <p className="lg:mt-4 to-up">
+                            <p className="my-4 text-gray-300 text-base sm:text-lg leading-relaxed to-up w-full font-normal">
                                 {data.frontmatter.description}
                             </p>
                             <Button
                                 to={data.fields.slug}
                                 label={`View ${data.frontmatter.title}`}
-                                title={"View"}
+                                title={"EXAMINE CODE"}
                                 iconRight={<ArrowRight />}
                             />
                         </div>
