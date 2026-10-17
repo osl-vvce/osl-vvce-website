@@ -42,25 +42,38 @@ const Navbar: React.FC<NavbarProps> = ({
     const navbar = useRef(null)
 
     const [scrolled, changeState] = useState(false)
+    const [hidden, setHidden] = useState(false)
     const [navbarHeight, setNavbarHeight] = useState(0)
     const [sidebarOpen, setSidebarOpen] = useState(false)
+    const lastScrollY = useRef(0)
 
     useEffect(() => {
         const onScroll = () => {
-            if (document.documentElement.scrollTop > 50 && !scrolled) {
+            const currentY = window.pageYOffset || document.documentElement.scrollTop
+            if (currentY > 40) {
                 changeState(true)
-            } else if (document.documentElement.scrollTop <= 50 && scrolled)
+                if (currentY > lastScrollY.current && currentY > 60) {
+                    setHidden(true)
+                } else if (currentY < lastScrollY.current) {
+                    setHidden(false)
+                }
+            } else {
                 changeState(false)
+                setHidden(false)
+            }
+            lastScrollY.current = currentY
         }
 
-        window.addEventListener("scroll", onScroll)
+        window.addEventListener("scroll", onScroll, { passive: true })
 
-        setNavbarHeight(navbar.current.getBoundingClientRect().height)
+        if (navbar.current) {
+            setNavbarHeight(navbar.current.getBoundingClientRect().height)
+        }
 
         return () => {
             window.removeEventListener("scroll", onScroll)
         }
-    }, [scrolled])
+    }, [])
 
     return (
         <React.Fragment>
@@ -68,6 +81,12 @@ const Navbar: React.FC<NavbarProps> = ({
                 className={`duration-300 transition-all flex justify-center lg:justify-between items-center z-20 fixed w-full nav ${
                     scrolled ? "scrolled bg-bg p-4" : "p-5"
                 }`}
+                style={{
+                    transform: hidden ? "translateY(-100%)" : "translateY(0)",
+                    opacity: hidden ? 0 : 1,
+                    pointerEvents: hidden ? "none" : "auto",
+                    transition: "transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease, padding 0.3s ease, background 0.3s ease",
+                }}
                 ref={navbar}
             >
                 <button
@@ -111,7 +130,7 @@ const Navbar: React.FC<NavbarProps> = ({
                         </div>
                     </div>
                 </SideBar>
-                <Link to="/" title={data.site.siteMetadata.title}>
+                <Link to="/" title={data.site.siteMetadata.title} className="logo-glow-wrapper">
                     <Logo
                         className={`duration-300 transition-all ${
                             scrolled ? "w-12" : "w-16"
