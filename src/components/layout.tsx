@@ -78,7 +78,6 @@ export default ({
             <div className={`wrapper ${themes[theme].name}`}>
                 <div className="text-color-default bg-bg relative">
                     <DrippingSpider />
-                    <TorchlightCursorFollower />
                     <Navbar
                         front={front}
                         navPlaceholder={navPlaceholder}
