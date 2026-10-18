@@ -578,3 +578,376 @@ h6 {
 #mdx a {
     text-decoration: underline;
 }
+
+/* ==========================================================================
+   OSL HALLOWEEN - SKELETON HAND CURSOR
+   ========================================================================== */
+
+html, body {
+    cursor: url('/images/skeleton-pointer.png') 2 1, auto !important;
+}
+
+a, button, [role="button"], input[type="submit"], input[type="button"], .btn, select, .cursor-pointer, .spooky-card, .spooky-badge, .spooky-btn-outline, .spooky-trick-btn, .spooky-treat-btn {
+    cursor: url('/images/skeleton-pointer.png') 2 1, pointer !important;
+}
+
+
+/* ==========================================================================
+   OSL HALLOWEEN - BATS FLYING OUT & SCARY INTRO ANIMATIONS
+   ========================================================================== */
+
+/* Bat Wing Flapping */
+@keyframes bat-wing-flap-left {
+    0%, 100% {
+        transform: rotate(38deg) scaleY(1);
+    }
+    50% {
+        transform: rotate(-44deg) scaleY(0.75);
+    }
+}
+
+@keyframes bat-wing-flap-right {
+    0%, 100% {
+        transform: rotate(-38deg) scaleY(1);
+    }
+    50% {
+        transform: rotate(44deg) scaleY(0.75);
+    }
+}
+
+.animate-bat-wing-left {
+    animation: bat-wing-flap-left 0.13s ease-in-out infinite;
+}
+
+.animate-bat-wing-right {
+    animation: bat-wing-flap-right 0.13s ease-in-out infinite;
+}
+
+/* Bat Flight Path 1: Straight at screen (Screech / Jumpscare) */
+@keyframes bat-fly-straight {
+    0% {
+        transform: translate(-50%, -50%) scale(0.04) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(5.5) rotate(-6deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-straight {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-straight 1.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    opacity: 0;
+}
+
+/* Bat Flight Path 2: Delayed straight attack */
+@keyframes bat-fly-straight-delayed {
+    0% {
+        transform: translate(-50%, -50%) scale(0.05) rotate(4deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-45%, -55%) scale(6) rotate(12deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-straight-delayed {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-straight-delayed 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+}
+
+/* Left Swoop Trajectories */
+@keyframes bat-fly-left-1 {
+    0% {
+        transform: translate(0, 0) scale(0.08) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-65vw, -45vh) scale(3.2) rotate(-28deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-left-1 {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-left-1 1.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-left-2 {
+    0% {
+        transform: translate(0, 0) scale(0.06) rotate(5deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-70vw, -15vh) scale(3.8) rotate(-18deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-left-2 {
+    top: 52%;
+    left: 48%;
+    animation: bat-fly-left-2 1.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-left-3 {
+    0% {
+        transform: translate(0, 0) scale(0.05);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-55vw, 40vh) scale(2.8) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-left-3 {
+    top: 48%;
+    left: 52%;
+    animation: bat-fly-left-3 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-left-4 {
+    0% {
+        transform: translate(0, 0) scale(0.06);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-60vw, -60vh) scale(3) rotate(-35deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-left-4 {
+    top: 51%;
+    left: 49%;
+    animation: bat-fly-left-4 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+/* Right Swoop Trajectories */
+@keyframes bat-fly-right-1 {
+    0% {
+        transform: translate(0, 0) scale(0.08) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(65vw, -45vh) scale(3.4) rotate(26deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-right-1 {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-right-1 1.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-right-2 {
+    0% {
+        transform: translate(0, 0) scale(0.06) rotate(-4deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(72vw, -10vh) scale(4) rotate(22deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-right-2 {
+    top: 49%;
+    left: 51%;
+    animation: bat-fly-right-2 1.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-right-3 {
+    0% {
+        transform: translate(0, 0) scale(0.05);
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(58vw, 38vh) scale(2.9) rotate(-12deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-right-3 {
+    top: 52%;
+    left: 48%;
+    animation: bat-fly-right-3 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-right-4 {
+    0% {
+        transform: translate(0, 0) scale(0.06);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(62vw, -58vh) scale(3.1) rotate(32deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-right-4 {
+    top: 48%;
+    left: 52%;
+    animation: bat-fly-right-4 1.95s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+/* High and Low flight arcs */
+@keyframes bat-fly-high-left {
+    0% { transform: translate(0, 0) scale(0.04); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translate(-45vw, -65vh) scale(2.6) rotate(-24deg); opacity: 0; }
+}
+
+.animate-bat-fly-high-left {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-high-left 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-high-right {
+    0% { transform: translate(0, 0) scale(0.04); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translate(45vw, -65vh) scale(2.6) rotate(24deg); opacity: 0; }
+}
+
+.animate-bat-fly-high-right {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-high-right 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-low-left {
+    0% { transform: translate(0, 0) scale(0.05); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translate(-50vw, 55vh) scale(3.2) rotate(18deg); opacity: 0; }
+}
+
+.animate-bat-fly-low-left {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-low-left 1.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-low-right {
+    0% { transform: translate(0, 0) scale(0.05); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translate(50vw, 55vh) scale(3.2) rotate(-18deg); opacity: 0; }
+}
+
+.animate-bat-fly-low-right {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-low-right 1.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+/* Spooky Lightning Flash */
+@keyframes spooky-lightning {
+    0%, 38%, 42%, 78%, 82%, 100% {
+        opacity: 0;
+    }
+    39%, 41% {
+        opacity: 0.85;
+    }
+    79%, 81% {
+        opacity: 0.95;
+    }
+}
+
+.animate-spooky-lightning {
+    animation: spooky-lightning 3.2s ease-in-out infinite;
+}
+
+/* Demon Eyes Lurking */
+@keyframes demon-eyes-glow {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    30%, 75% {
+        opacity: 0.95;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.15;
+        transform: scale(0.95) scaleY(0.1); /* Blink */
+    }
+    55% {
+        opacity: 0.95;
+        transform: scale(1);
+    }
+}
+
+.animate-demon-eyes {
+    animation: demon-eyes-glow 2.8s ease-in-out infinite;
+}
+
+/* Fog Drift */
+@keyframes fog-drift {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 800px 0;
+    }
+}
+
+.animate-fog-drift {
+    animation: fog-drift 20s linear infinite;
+}
+
