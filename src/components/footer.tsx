@@ -49,6 +49,22 @@ export default function() {
                     Copyright &copy; {query.site.siteMetadata.title}{" "}
                     {new Date().getFullYear()} • Crafted with Spooky Passion 🦇
                 </p>
+                <div className="mt-4">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            if (typeof window !== "undefined" && (window as any).triggerHalloweenBatIntro) {
+                                (window as any).triggerHalloweenBatIntro()
+                            }
+                        }}
+                        className="inline-flex items-center space-x-2 px-4 py-2 text-xs font-bold uppercase tracking-widest text-orange-400 bg-neutral-900/90 hover:bg-neutral-800 border border-orange-500/40 rounded-full transition-all duration-300 shadow-[0_0_12px_rgba(255,80,0,0.3)] hover:shadow-[0_0_20px_rgba(255,80,0,0.7)] hover:border-orange-500 cursor-pointer"
+                        title="Replay the spooky bats intro"
+                    >
+                        <span>🦇</span>
+                        <span>Replay Bat Swarm Intro</span>
+                        <span>🦇</span>
+                    </button>
+                </div>
             </div>
         </footer>
     )
