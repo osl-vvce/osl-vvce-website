@@ -9,8 +9,6 @@ declare global {
 export default function HalloweenBatLoader() {
     const [isVisible, setIsVisible] = useState(true)
     const [isFadingOut, setIsFadingOut] = useState(false)
-    const [progress, setProgress] = useState(15)
-    const [statusText, setStatusText] = useState("Summoning the shadows...")
     const audioCtxRef = useRef<AudioContext | null>(null)
 
     // Play subtle eerie audio drone and bat wing whooshes via native Web Audio API
@@ -70,24 +68,7 @@ export default function HalloweenBatLoader() {
     const startIntroSequence = useCallback(() => {
         setIsVisible(true)
         setIsFadingOut(false)
-        setProgress(15)
-        setStatusText("Summoning the shadows...")
         playSpookyAudio()
-
-        const t1 = setTimeout(() => {
-            setProgress(52)
-            setStatusText("Unleashing the bat swarm...")
-        }, 900)
-
-        const t2 = setTimeout(() => {
-            setProgress(88)
-            setStatusText("Breaching the OSL realm...")
-        }, 2100)
-
-        const t3 = setTimeout(() => {
-            setProgress(100)
-            setStatusText("The realm is open!")
-        }, 3000)
 
         const tFade = setTimeout(() => {
             setIsFadingOut(true)
@@ -98,9 +79,6 @@ export default function HalloweenBatLoader() {
         }, 4400)
 
         return () => {
-            clearTimeout(t1)
-            clearTimeout(t2)
-            clearTimeout(t3)
             clearTimeout(tFade)
             clearTimeout(tDone)
         }
@@ -232,24 +210,6 @@ export default function HalloweenBatLoader() {
                     OSL REALM
                 </h1>
 
-                <p className="mt-2 text-sm sm:text-base font-semibold tracking-wider text-orange-200/85 uppercase">
-                    {statusText}
-                </p>
-
-                {/* Spooky Progress Bar */}
-                <div className="mt-6 w-64 sm:w-80 h-2.5 bg-neutral-950 rounded-full overflow-hidden border border-red-900/70 p-[1px] shadow-[0_0_18px_rgba(255,40,0,0.5)]">
-                    <div
-                        className="h-full bg-gradient-to-r from-red-600 via-orange-500 to-amber-400 rounded-full transition-all duration-700 ease-out relative"
-                        style={{ width: `${progress}%` }}
-                    >
-                        {/* Glow head */}
-                        <div className="absolute right-0 top-0 bottom-0 w-3 bg-white rounded-full shadow-[0_0_12px_#fff]" />
-                    </div>
-                </div>
-
-                <span className="mt-2.5 text-xs font-mono text-red-400/80 tracking-widest">
-                    {progress}% AWAKENED
-                </span>
             </div>
 
             {/* Skip Button */}
