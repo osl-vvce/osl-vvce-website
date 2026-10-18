@@ -9,6 +9,7 @@ import Navbar from "./navigation"
 
 import Footer from "./footer"
 import SEO, { SEOProps } from "../utils/seo"
+import HalloweenBatLoader from "./halloween-bat-loader"
 
 import "../style/index.css"
 import { ThemeQuery } from "./__generated__/ThemeQuery"
@@ -77,6 +78,7 @@ export default ({
             <SEO {...seo} />
             <div className={`wrapper ${themes[theme].name}`}>
                 <div className="text-color-default bg-bg relative">
+                    <HalloweenBatLoader />
                     <DrippingSpider />
                     <Navbar
                         front={front}
