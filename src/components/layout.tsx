@@ -9,7 +9,6 @@ import Navbar from "./navigation"
 
 import Footer from "./footer"
 import SEO, { SEOProps } from "../utils/seo"
-import HalloweenBatLoader from "./halloween-bat-loader"
 
 import "../style/index.css"
 import { ThemeQuery } from "./__generated__/ThemeQuery"
@@ -21,6 +20,7 @@ type LayoutProps = {
     seo: Partial<SEOProps>
     navPlaceholder?: boolean
     location: WindowLocation
+    hideNavAndFooter?: boolean
 }
 
 export default ({
@@ -29,6 +29,7 @@ export default ({
     seo,
     navPlaceholder = true,
     location,
+    hideNavAndFooter = false,
 }: LayoutProps) => {
     const query = useStaticQuery<ThemeQuery>(graphql`
         query ThemeQuery {
@@ -77,19 +78,43 @@ export default ({
             <Head data={query} />
             <SEO {...seo} />
             <div className={`wrapper ${themes[theme].name}`}>
-                <div className="text-color-default bg-bg relative">
-                    <HalloweenBatLoader />
-                    <Navbar
-                        front={front}
-                        navPlaceholder={navPlaceholder}
-                        location={location}
-                        currentTheme={theme}
-                        switchTheme={switchTheme}
-                        themes={themes}
-                        allowThemeSwitch={query.site.siteMetadata.switchTheme}
-                    />
-                    {children}
-                    <Footer />
+                <div className="text-color-default relative min-h-screen">
+                    {!hideNavAndFooter && (
+                        <>
+                            {/* Persistent Fixed Spooky Halloween Background Base Layer - Brightened & Vibrant */}
+                            <div
+                                className="fixed inset-0 pointer-events-none z-0 bg-cover bg-center bg-no-repeat"
+                                style={{
+                                    backgroundImage: `url('/images/halloween-wall.jpg')`,
+                                    filter: "brightness(1.36) contrast(1.04) saturate(1.15)",
+                                }}
+                            />
+                            {/* Uniform Atmospheric Tint maintaining consistent vibrant brightness from top to bottom */}
+                            <div
+                                className="fixed inset-0 pointer-events-none z-0"
+                                style={{
+                                    backgroundColor: "rgba(14, 9, 22, 0.15)",
+                                }}
+                            />
+                            <Navbar
+                                front={front}
+                                navPlaceholder={navPlaceholder}
+                                location={location}
+                                currentTheme={theme}
+                                switchTheme={switchTheme}
+                                themes={themes}
+                                allowThemeSwitch={query.site.siteMetadata.switchTheme}
+                            />
+                        </>
+                    )}
+                    <div className="relative z-10">
+                        {children}
+                    </div>
+                    {!hideNavAndFooter && (
+                        <div className="relative z-10">
+                            <Footer />
+                        </div>
+                    )}
                 </div>
             </div>
         </React.Fragment>
