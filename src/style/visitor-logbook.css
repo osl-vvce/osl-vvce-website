@@ -1,33 +1,45 @@
-/* OSL VVCE Visitor-Logbook - Integrated with Main Website Theme 1*/
+/* ========================================================
+   OSL VVCE VISITOR LOGBOOK - HALLOWEEN LIQUID MORPHISM THEME
+   Integrated with Haunted Realm Aesthetic: Frosted Obsidian Glass,
+   Glowing Pumpkin Accents, Cinzel Gothic Typography & Razor-Sharp Contrast
+   ======================================================== */
 
 .visitor-logbook-page {
     min-height: 100vh;
-    padding: 2rem 0;
+    padding: 3rem 0 5rem;
+    position: relative;
+    z-index: 10;
 }
 
 .logbook-content-wrapper {
-    max-width: 42rem;
+    max-width: 44rem;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 1.25rem;
 }
 
 /* Header Section */
 .logbook-header-section {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .logbook-logo-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 .logbook-logo {
-    width: 5rem;
-    height: 5rem;
+    width: 5.5rem;
+    height: 5.5rem;
     object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.6)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.9));
+    transition: transform 0.3s ease;
+}
+
+.logbook-logo:hover {
+    transform: scale(1.06) rotate(-2deg);
 }
 
 .logbook-title-section {
@@ -37,27 +49,87 @@
 }
 
 .logbook-page-title {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: var(--text-color);
+    font-size: 2.6rem;
+    font-family: "Cinzel", Georgia, serif !important;
+    font-weight: 900 !important;
+    background: linear-gradient(180deg, #ffffff 15%, #fff6db 45%, #fed7aa 72%, #fb923c 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #ffffff !important;
+    letter-spacing: 0.04em !important;
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(255, 140, 0, 0.45)) !important;
+    display: inline-block;
 }
 
 .logbook-subtitle {
-    font-size: 1.125rem;
-    color: var(--text-color);
-    opacity: 0.75;
+    font-size: 1.1rem;
+    color: #fed7aa !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+    font-weight: 500;
 }
 
-/* Form Container */
+/* Navigation Action Row */
+.logbook-action-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.75rem;
+}
+
+.secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.75rem !important;
+    border-radius: 9999px !important;
+    font-family: "Cinzel", Georgia, serif !important;
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.09em !important;
+    text-transform: uppercase !important;
+    color: #0c0712 !important;
+    background: linear-gradient(180deg, #ffffff 0%, #fff6db 30%, #fed7aa 70%, #fb923c 100%) !important;
+    border: 2px solid #000000 !important;
+    box-shadow: 0 0 16px rgba(254, 215, 170, 0.45), 0 8px 25px rgba(0, 0, 0, 0.85) !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.secondary-btn:hover {
+    color: #0c0712 !important;
+    background: linear-gradient(180deg, #ffffff 0%, #ffffff 35%, #fef3c7 70%, #fed7aa 100%) !important;
+    border-color: #000000 !important;
+    box-shadow: 0 0 26px rgba(254, 215, 170, 0.75), 0 10px 30px rgba(0, 0, 0, 0.95) !important;
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* Form Container - Liquid Frosted Obsidian Glass */
 .logbook-form-container {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 1rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(
+        160deg,
+        rgba(24, 10, 32, 0.94) 0%,
+        rgba(18, 8, 26, 0.96) 45%,
+        rgba(10, 4, 16, 0.98) 100%
+    ) !important;
+    border: 1px solid rgba(255, 175, 75, 0.4) !important;
+    border-radius: 1.75rem !important;
+    box-shadow: 
+        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.3),
+        inset 0 0 35px rgba(255, 120, 0, 0.08),
+        0 24px 60px -10px rgba(0, 0, 0, 0.95),
+        0 0 35px rgba(255, 110, 0, 0.2) !important;
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
     overflow: hidden;
     position: relative;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Pumpkin Fire Glowing Top Accent Line */
 .logbook-form-container::before {
     content: '';
     position: absolute;
@@ -65,24 +137,33 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(90deg, #ea580c 0%, #f97316 45%, #facc15 75%, #ea580c 100%) !important;
+    box-shadow: 0 0 14px rgba(249, 115, 22, 0.85);
+    z-index: 5;
 }
 
 /* Form Styles */
 .visitor-form {
-    padding: 2rem;
+    padding: 2.25rem 2.5rem;
     position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 640px) {
+    .visitor-form {
+        padding: 1.5rem 1.25rem;
+    }
 }
 
 /* Form Rows */
 .form-row {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.6rem;
 }
 
 .form-row.two-columns {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.25rem;
 }
 
 @media (min-width: 768px) {
@@ -94,90 +175,115 @@
 .input-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.55rem;
 }
 
-/* Input Labels */
+/* Input Labels - Golden Amber Gothic */
 .visitor-form label {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text-color);
-    opacity: 0.75;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-family: "Cinzel", Georgia, serif !important;
+    font-weight: 700 !important;
+    color: #fed7aa !important;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
 .visitor-form label i {
-    color: var(--primary-color);
-    width: 1rem;
+    color: #ff9900 !important;
+    filter: drop-shadow(0 0 6px rgba(255, 153, 0, 0.7));
+    width: 1.1rem;
     text-align: center;
+    font-size: 0.95rem;
 }
 
-/* Input Fields */
+/* Input Fields - Spooky Deep Plum with Amber Border Glow */
 .visitor-form input[type="text"],
 .visitor-form input[type="time"],
 .visitor-form textarea {
     width: 100%;
-    padding: 0.75rem 1rem;
-    background: var(--input-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 0.5rem;
-    color: var(--text-color);
-    font-size: 1rem;
-    transition: all 0.2s ease;
+    padding: 0.85rem 1.15rem;
+    background: rgba(14, 6, 22, 0.9) !important;
+    border: 1px solid rgba(255, 140, 0, 0.35) !important;
+    border-radius: 0.75rem !important;
+    color: #fffdf5 !important;
+    font-size: 1.02rem;
+    font-family: "Plus Jakarta Sans", "Raleway", sans-serif;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     outline: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .visitor-form input::placeholder,
 .visitor-form textarea::placeholder {
-    color: var(--text-color);
-    opacity: 0.5;
+    color: rgba(254, 215, 170, 0.42) !important;
     font-style: italic;
 }
 
 .visitor-form input:focus,
 .visitor-form textarea:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+    border-color: #f97316 !important;
+    box-shadow: 0 0 18px rgba(249, 115, 22, 0.4), inset 0 0 8px rgba(249, 115, 22, 0.15) !important;
+    background: rgba(22, 9, 32, 0.98) !important;
     transform: translateY(-1px);
+}
+
+/* Time Input Specific Icon Tuning */
+.visitor-form input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8) sepia(1) saturate(5) hue-rotate(350deg);
+    cursor: pointer;
 }
 
 /* Textarea Specific */
 .visitor-form textarea {
     resize: vertical;
-    min-height: 5rem;
-    line-height: 1.6;
+    min-height: 5.5rem;
+    line-height: 1.65;
 }
 
 /* Form Actions */
 .form-actions {
-    padding-top: 1.5rem;
+    padding-top: 1.75rem;
     text-align: center;
 }
 
-/* Submit Button */
+/* Submit Button - Moonbeam White to Golden-Amber Gothic Button */
 .submit-btn {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
+    background: linear-gradient(180deg, #ffffff 0%, #fff6db 30%, #fed7aa 70%, #fb923c 100%) !important;
+    color: #0c0712 !important;
+    border: 2px solid #000000 !important;
+    border-radius: 9999px !important;
+    padding: 0.85rem 2.5rem !important;
+    font-family: "Cinzel", Georgia, serif !important;
+    font-size: 1.05rem !important;
+    font-weight: 800 !important;
     cursor: pointer;
-    transition: all 0.2s ease;
-    min-width: 12rem;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 14rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.09em;
+    box-shadow: 0 0 25px rgba(254, 215, 170, 0.45), 0 8px 25px rgba(0, 0, 0, 0.85) !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
 }
 
 .submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px 0 rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px) scale(1.03);
+    background: linear-gradient(180deg, #ffffff 0%, #ffffff 35%, #fef3c7 70%, #fed7aa 100%) !important;
+    border-color: #000000 !important;
+    box-shadow: 0 0 35px rgba(254, 215, 170, 0.75), 0 12px 30px rgba(0, 0, 0, 0.9) !important;
+    color: #0c0712 !important;
+}
+
+.submit-btn i {
+    color: #0c0712 !important;
+    filter: none !important;
 }
 
 .submit-btn:active {
@@ -188,252 +294,149 @@
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
+    box-shadow: none !important;
 }
 
 .submit-btn i {
-    margin-right: 0.5rem;
+    color: #fef08a;
+    filter: drop-shadow(0 0 6px #ff7700);
 }
 
 /* Submit Message */
 .submit-message {
-    margin-top: 1rem;
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
+    margin-top: 1.25rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
     text-align: center;
+    font-size: 1rem;
+    backdrop-filter: blur(12px);
 }
 
 .submit-message.success {
-    background-color: #d1fae5;
-    color: #065f46;
-    border: 1px solid #a7f3d0;
+    background: rgba(20, 83, 45, 0.9) !important;
+    color: #f0fdf4 !important;
+    border: 1px solid #4ade80 !important;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
 .submit-message.error {
-    background-color: #fee2e2;
-    color: #991b1b;
-    border: 1px solid #fca5a5;
+    background: rgba(127, 29, 29, 0.9) !important;
+    color: #fef2f2 !important;
+    border: 1px solid #f87171 !important;
+    box-shadow: 0 0 15px rgba(248, 113, 113, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
-.logbook-action-row {
-    display: flex;
-    justify-content: center;
-    padding: 1rem 1.5rem 0;
-}
-
-.secondary-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--border-color);
-    border-radius: 0.75rem;
-    padding: 0.85rem 1.5rem;
-    background: transparent;
-    color: var(--text-color);
-    transition: all 0.2s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 700;
-}
-
-.secondary-btn:hover {
-    background: rgba(var(--primary-rgb), 0.08);
-}
-
-.visitor-logs-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding: 1rem 1.5rem 2rem;
-}
-
-.visitor-log-card {
-    background: transparent;
-    border: 1px dashed rgba(0,0,0,0.06);
-    border-radius: 0.75rem;
-    padding: 0.75rem 1rem;
-}
-
-.visitor-log-tuple {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 0.95rem;
-    color: var(--text-color);
-    background: rgba(0,0,0,0.02);
-    padding: 0.6rem 0.8rem;
-    border-radius: 0.5rem;
-    white-space: pre-wrap;
-    word-break: break-word;
-}
-
-@media (max-width: 900px) {
-    .visitor-logs-list {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* CSS Custom Properties */
-:root {
-    --primary-color: #3b82f6;
-    --secondary-color: #8b5cf6;
-    --primary-rgb: 59, 130, 246;
-    --text-color: var(--text-primary, #1f2937);
-    --card-bg: var(--card-bg-color, #ffffff);
-    --input-bg: var(--input-bg-color, #f9fafb);
-    --border-color: var(--border-color-primary, #e5e7eb);
-}
-
-/* Theme Support */
-.theme-light {
-    --text-color: var(--color-default, #1f2937);
-    --card-bg: var(--bg, #ffffff);
-    --input-bg: var(--bg-alt, #f9fafb);
-    --border-color: var(--border-color-default, #e5e7eb);
-}
-
-.theme-dark {
-    --text-color: var(--color-default, #f9fafb);
-    --card-bg: var(--bg, #1f2937);
-    --input-bg: var(--bg-alt, #374151);
-    --border-color: var(--border-color-default, #4b5563);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .logbook-content-wrapper {
-        padding: 0 1rem;
-    }
-    
-    .logbook-logo {
-        width: 4rem;
-        height: 4rem;
-    }
-    
-    .logbook-page-title {
-        font-size: 1.875rem;
-    }
-    
-    .visitor-form {
-        padding: 1.5rem;
-    }
-    
-    .form-row.two-columns {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .submit-btn {
-        width: 100%;
-        min-width: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .logbook-logo {
-        width: 3rem;
-        height: 3rem;
-    }
-    
-    .logbook-page-title {
-        font-size: 1.5rem;
-    }
-    
-    .visitor-form {
-        padding: 1rem;
-    }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        transition: none !important;
-        animation: none !important;
-    }
-}
-
-/* Full width layout for logs page */
+/* ========================================================
+   FULL WIDTH TABLE STYLES FOR VISITOR LOGS PAGE
+   ======================================================== */
 .visitor-logs-fullwidth {
-    max-width: none;
+    max-width: 78rem;
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
 }
 
 .visitor-logs-fullcontainer {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    padding: 0.5rem 0;
-    margin: 0;
+    padding: 1.5rem;
 }
 
-.visitor-log-card {
-    border: none;
-    padding: 0;
-    background: transparent;
-}
-
-.visitor-log-tuple {
-    background: transparent;
-    padding: 0.4rem 0.6rem;
-}
-
-/* Table styles for logs */
 .visitor-logs-table-wrap {
     width: 100%;
     overflow-x: auto;
-    padding: 0.5rem 0;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 140, 0, 0.25);
+    background: rgba(12, 5, 18, 0.75);
+    margin-top: 1rem;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
 .visitor-logs-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 900px;
-    font-family: "Raleway", sans-serif;
+    min-width: 850px;
+    font-family: "Plus Jakarta Sans", "Raleway", sans-serif;
 }
 
 .visitor-logs-table thead th {
     text-align: left;
-    padding: 0.75rem 1rem;
-    background: linear-gradient(90deg, rgba(59,130,246,0.12), rgba(139,92,246,0.12));
-    color: var(--text-color);
-    font-weight: 700;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    font-family: "Raleway", sans-serif;
+    padding: 0.9rem 1.15rem;
+    background: linear-gradient(90deg, rgba(45, 18, 65, 0.92) 0%, rgba(30, 12, 45, 0.95) 100%) !important;
+    color: #ffa500 !important;
+    font-family: "Cinzel", Georgia, serif !important;
+    font-weight: 800 !important;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 140, 0, 0.35) !important;
+    text-shadow: 0 0 12px rgba(255, 140, 0, 0.5);
 }
 
 .visitor-logs-table tbody td {
-    padding: 0.6rem 1rem;
-    vertical-align: top;
-    border-bottom: 1px solid rgba(255,255,255,0.03);
-    color: var(--text-color);
-    font-family: "Raleway", sans-serif;
+    padding: 0.85rem 1.15rem;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(255, 140, 0, 0.12);
+    color: #fffdf5 !important;
     font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .visitor-logs-table tbody tr {
     background: transparent;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .visitor-logs-table tbody tr:nth-child(odd) {
-    background: rgba(59, 130, 246, 0.06);
+    background: rgba(255, 140, 0, 0.025);
 }
 
 .visitor-logs-table tbody tr:nth-child(even) {
-    background: rgba(139, 92, 246, 0.04);
+    background: rgba(35, 14, 50, 0.35);
 }
 
 .visitor-logs-table tbody tr:hover {
-    background: rgba(59, 130, 246, 0.12);
+    background: rgba(255, 140, 0, 0.12) !important;
 }
 
-.td-name { width: 20%; font-weight: 700 }
-.td-usn { width: 10%; color: rgba(255,255,255,0.75) }
-.td-date { width: 10%; color: rgba(255,255,255,0.75) }
-.td-in, .td-out { width: 10%; color: rgba(255,255,255,0.75) }
-.td-purpose { width: 35% }
-.td-progress { width: 15%; color: rgba(255,255,255,0.8) }
+.td-name {
+    width: 20%;
+    font-weight: 700;
+    color: #fed7aa !important;
+    font-family: "Cinzel", Georgia, serif;
+}
+
+.td-usn {
+    width: 12%;
+    color: #fbd38d !important;
+    font-family: monospace;
+    font-weight: 600;
+}
+
+.td-date {
+    width: 10%;
+    color: rgba(254, 215, 170, 0.85) !important;
+}
+
+.td-in,
+.td-out {
+    width: 10%;
+    color: #fdba74 !important;
+    font-weight: 600;
+}
+
+.td-purpose {
+    width: 32%;
+    color: #fffdf5 !important;
+}
+
+.td-progress {
+    width: 16%;
+    color: rgba(254, 243, 199, 0.9) !important;
+}
 
 @media (max-width: 900px) {
-    .visitor-logs-table { min-width: 700px }
+    .visitor-logs-table {
+        min-width: 720px;
+    }
 }
