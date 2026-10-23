@@ -108,6 +108,7 @@ const VisitorLogbook: React.FC<VisitorLogbookProps> = ({ location }) => {
           </div>
           <div className="logbook-action-row">
             <Link to="/visitor-logbook-logs" className="secondary-btn">
+              <i className="fas fa-scroll mr-2"></i>
               View all visitor logs
             </Link>
           </div>
