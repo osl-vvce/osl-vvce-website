@@ -38,51 +38,70 @@ export default function member({ location, data }) {
         >
             <div className="md:px-4 mt-12 py-6 md:w-1/3 mx-auto">
                 <div className="mx-auto relative">
-                    {data.mdx.frontmatter.avatar?.childImageSharp?.fluid ? (
-                        <Img
-                            className="rounded"
-                            fluid={
-                                data.mdx.frontmatter.avatar.childImageSharp.fluid
-                            }
-                        />
-                    ) : data.mdx.frontmatter.avatar?.publicURL ? (
-                        <img
-                            className="rounded w-full"
-                            src={data.mdx.frontmatter.avatar.publicURL}
-                            alt={data.mdx.frontmatter.fullname}
-                        />
-                    ) : data.mdx.frontmatter.avatarStatic ? (
-                        <img
-                            className="rounded w-full"
-                            src={data.mdx.frontmatter.avatarStatic}
-                            alt={data.mdx.frontmatter.fullname}
-                        />
-                    ) : (
-                        <div className="rounded w-full h-64 bg-gray-200 flex items-center justify-center text-color-3">
-                            No avatar available
-                        </div>
-                    )}
-                    <div className="relative w-full lg:w-3/4 md:w-11/12 sm:w-full p-6 box-border lg:box-content mx-auto bg-bg text-color-default blog-wall-content shadow-xl md:-mt-16 ">
-                        <div className="p-3">
-                            <h1 className="text-5xl font-bold text-primary text-center">
+                    {/* Clean Floating Avatar Card */}
+                    <div className="w-56 h-56 sm:w-64 sm:h-64 mx-auto rounded-3xl overflow-hidden border-2 border-orange-500/50 shadow-[0_15px_35px_rgba(0,0,0,0.85),0_0_25px_rgba(255,120,0,0.25)] bg-black/80 transition-all duration-300 transform hover:-translate-y-1 hover:border-orange-400">
+                        {data.mdx.frontmatter.avatar?.childImageSharp?.fluid ? (
+                            <Img
+                                fluid={
+                                    data.mdx.frontmatter.avatar.childImageSharp
+                                        .fluid
+                                }
+                                className="w-full h-full"
+                                style={{ height: "100%", width: "100%" }}
+                                imgStyle={{
+                                    objectFit: "cover",
+                                    height: "100%",
+                                    width: "100%",
+                                }}
+                            />
+                        ) : data.mdx.frontmatter.avatar?.publicURL ? (
+                            <img
+                                className="w-full h-full object-cover"
+                                src={data.mdx.frontmatter.avatar.publicURL}
+                                alt={data.mdx.frontmatter.fullname}
+                                style={{ height: "100%", width: "100%", objectFit: "cover", display: "block" }}
+                            />
+                        ) : data.mdx.frontmatter.avatarStatic ? (
+                            <img
+                                className="w-full h-full object-cover"
+                                src={data.mdx.frontmatter.avatarStatic}
+                                alt={data.mdx.frontmatter.fullname}
+                                style={{ height: "100%", width: "100%", objectFit: "cover", display: "block" }}
+                            />
+                        ) : (
+                            <div className="w-full h-full bg-neutral-900 flex items-center justify-center text-orange-400/60 font-serif text-sm">
+                                No avatar available
+                            </div>
+                        )}
+                    </div>
+                    <div className="relative w-full p-6 sm:p-8 box-border mx-auto blog-wall-content shadow-2xl mt-6">
+                        <div className="p-2 sm:p-3 text-center">
+                            <h1 className="text-3xl sm:text-5xl font-black font-spooky spooky-headline">
                                 {data.mdx.frontmatter.fullname}
                             </h1>
-                            <h2 className="mt-1 text-center">
-                                <span className="ml-2">
+                            <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+                                <span className="text-xs sm:text-sm font-semibold tracking-widest text-orange-400 uppercase">
                                     {data.mdx.frontmatter.role}
                                 </span>
-                                <span className="ml-4">
-                                    {data.mdx.frontmatter.batch}
-                                </span>
-                                <span className="ml-4">
-                                    {data.mdx.frontmatter.branch}
-                                </span>
-                            </h2>
-                            <p className="mt-3">
-                                {"— "}
-                                {data.mdx.frontmatter.tagline}
+                                {data.mdx.frontmatter.batch && (
+                                    <span className="text-orange-200/80 text-sm font-serif">
+                                        • {data.mdx.frontmatter.batch}
+                                    </span>
+                                )}
+                                {data.mdx.frontmatter.branch && (
+                                    <span className="text-orange-200/80 text-sm font-serif">
+                                        • {data.mdx.frontmatter.branch}
+                                    </span>
+                                )}
+                            </div>
+                            {data.mdx.frontmatter.tagline && (
+                                <p className="mt-4 italic text-orange-200 text-base">
+                                    "{data.mdx.frontmatter.tagline}"
+                                </p>
+                            )}
+                            <p className="mt-4 text-orange-100/90 leading-relaxed font-medium text-left sm:text-center">
+                                {data.mdx.frontmatter.about}
                             </p>
-                            <p className="mt-3">{data.mdx.frontmatter.about}</p>
                             <ul className="mt-8 text-center">
                                 {data.site.siteMetadata.social.map((e, i) => {
                                     if (url[i] !== null) {

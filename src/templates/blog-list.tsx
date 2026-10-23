@@ -19,9 +19,9 @@ export default function blogList({ data, pageContext, location }: PageProps<Blog
         >
             <div className="container mx-auto py-12">
                 <div className="title py-12 text-center">
-                    <h2 className="font-black text-5xl text-color-1">
+                    <h1 className="font-spooky spooky-headline text-4xl sm:text-6xl font-black tracking-wider">
                         Blog
-                    </h2>
+                    </h1>
                 </div>
                 <div className="flex flex-wrap">{blogItems}</div>
                 <Pagination pageContext={pageContext} type="blog" />

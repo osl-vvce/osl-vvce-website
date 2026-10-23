@@ -25,26 +25,26 @@ export default function porfolio ({ location, data }: PageProps<PortfolioQuery, 
                         fluid={
                             data.mdx.frontmatter.banner.childImageSharp.fluid
                         }
+                        className="rounded-2xl overflow-hidden shadow-2xl"
                     />
-                    <div className="flex items-center justify-center relative lg:absolute w-full h-full top-0 left-0">
-                        <div className="hidden lg:block absolute w-full h-full bg-black opacity-50"></div>
-                        <div className="px-4 py-8 lg:p-0 relative z-10 text-center text-color-default lg:text-white bg-bgalt lg:bg-transparent">
-                            <h1 className="text-5xl font-bold text-color-1 lg:text-white">
+                    <div className="relative w-full lg:w-3/4 md:w-11/12 sm:w-full p-6 sm:p-8 box-border mx-auto blog-wall-content shadow-2xl md:-mt-16 z-10">
+                        <div className="p-2 sm:p-3">
+                            <h1 className="text-3xl sm:text-5xl font-black font-spooky spooky-headline">
                                 {data.mdx.frontmatter.title}
                             </h1>
-                            <p className="mt-1 flex items-center justify-center">
-                                <Calendar />{" "}
-                                <span className="ml-2">
+                            <p className="mt-2 flex items-center text-orange-300 text-sm">
+                                <Calendar className="w-4 h-4 mr-2" />{" "}
+                                <span>
                                     {data.mdx.frontmatter.date}
                                 </span>
                             </p>
-                            <p className="mt-3 md:w-3/4 mx-auto">
+                            <p className="mt-3 text-orange-100/90 leading-relaxed font-medium">
                                 {data.mdx.frontmatter.description}
                             </p>
                         </div>
                     </div>
                 </div>
-                <div className="lg:w-3/4 md:w-11/12 sm:w-full p-3 mt-4 md:mt-6 mx-auto lg:mt-12">
+                <div className="lg:w-3/4 md:w-11/12 sm:w-full mx-auto post-content text-lg relative z-10">
                     <MDXProvider components={{ Row, Col }}>
                         <MDXRenderer>{data.mdx.body}</MDXRenderer>
                     </MDXProvider>

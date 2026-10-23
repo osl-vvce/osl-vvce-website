@@ -19,14 +19,14 @@ export default function basePages({
             }}
             location={location}
         >
-            <div className="boxed">
-                <div className="title py-12 text-center">
-                    <h2 className="font-black text-5xl text-color-1">
+            <div className="md:px-4 mt-12 py-6 md:w-11/12 mx-auto">
+                <div className="title py-8 text-center">
+                    <h1 className="font-spooky spooky-headline text-4xl sm:text-6xl font-black">
                         {data.mdx.frontmatter.title}
-                    </h2>
+                    </h1>
                 </div>
-                <div className="post-content px-4 lg:px-24 md:px-8 pb-12">
-                    <MDXProvider componentes={{ Row, Col }}>
+                <div className="lg:w-3/4 md:w-11/12 sm:w-full mx-auto post-content text-lg relative z-10">
+                    <MDXProvider components={{ Row, Col }}>
                         <MDXRenderer>{data.mdx.body}</MDXRenderer>
                     </MDXProvider>
                 </div>
