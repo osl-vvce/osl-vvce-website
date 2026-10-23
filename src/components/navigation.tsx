@@ -4,8 +4,7 @@ import { WindowLocation } from "@reach/router"
 
 import { Logo } from "./utils"
 import List from "./navigation-list"
-import { Menu } from "react-feather"
-import SideBar from "./sidebar"
+import { Menu, X } from "react-feather"
 import { NavigationQuery } from "./__generated__/NavigationQuery"
 import { Theme } from "./layout"
 
@@ -18,6 +17,9 @@ type NavbarProps = {
     allowThemeSwitch: boolean
     front: boolean
 }
+
+
+
 const Navbar: React.FC<NavbarProps> = ({
     navPlaceholder,
     location,
@@ -39,29 +41,20 @@ const Navbar: React.FC<NavbarProps> = ({
         }
     `)
 
-    const navbar = useRef(null)
+    const navbar = useRef<HTMLDivElement>(null)
 
-    const [scrolled, changeState] = useState(false)
-    const [hidden, setHidden] = useState(false)
+    const [scrolled, setScrolled] = useState(false)
     const [navbarHeight, setNavbarHeight] = useState(0)
     const [sidebarOpen, setSidebarOpen] = useState(false)
-    const lastScrollY = useRef(0)
 
     useEffect(() => {
         const onScroll = () => {
             const currentY = window.pageYOffset || document.documentElement.scrollTop
             if (currentY > 40) {
-                changeState(true)
-                if (currentY > lastScrollY.current && currentY > 60) {
-                    setHidden(true)
-                } else if (currentY < lastScrollY.current) {
-                    setHidden(false)
-                }
+                setScrolled(true)
             } else {
-                changeState(false)
-                setHidden(false)
+                setScrolled(false)
             }
-            lastScrollY.current = currentY
         }
 
         window.addEventListener("scroll", onScroll, { passive: true })
@@ -75,69 +68,169 @@ const Navbar: React.FC<NavbarProps> = ({
         }
     }, [])
 
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape" && sidebarOpen) {
+                setSidebarOpen(false)
+            }
+        }
+        window.addEventListener("keydown", handleKeyDown)
+        return () => window.removeEventListener("keydown", handleKeyDown)
+    }, [sidebarOpen])
+
     return (
         <React.Fragment>
+            {/* Separate Floating OSL Logo in Top-Left Corner (Shown when scrolled) */}
             <div
-                className={`duration-300 transition-all flex justify-center lg:justify-between items-center z-20 fixed w-full nav ${
-                    scrolled ? "scrolled bg-bg p-4" : "p-5"
-                }`}
+                className="fixed z-40 transition-all duration-300"
                 style={{
-                    transform: hidden ? "translateY(-100%)" : "translateY(0)",
-                    opacity: hidden ? 0 : 1,
-                    pointerEvents: hidden ? "none" : "auto",
-                    transition: "transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease, padding 0.3s ease, background 0.3s ease",
+                    top: "16px",
+                    left: "20px",
+                    transform: scrolled ? "translateY(0) scale(1)" : "translateY(-18px) scale(0.9)",
+                    opacity: scrolled ? 1 : 0,
+                    pointerEvents: scrolled ? "auto" : "none",
+                }}
+            >
+                <Link
+                    to="/"
+                    title={data.site.siteMetadata.title}
+                    className="logo-glow-wrapper floating-logo-btn group relative flex items-center z-10"
+                >
+                    <div className="relative">
+                        <Logo className="w-12 sm:w-14" />
+                        {/* Spooky Jack-o'-lantern Halo Aura */}
+                        <div className="absolute inset-0 rounded-full bg-orange-600/20 blur-md pointer-events-none group-hover:bg-orange-500/40 transition-all duration-300" />
+                    </div>
+                </Link>
+            </div>
+
+            {/* Separate Floating Menu Button in Top-Right Corner (Shown when scrolled) */}
+            <div
+                className="fixed z-50 transition-all duration-300"
+                style={{
+                    top: "16px",
+                    right: "20px",
+                    transform: scrolled ? "translateY(0) scale(1)" : "translateY(-18px) scale(0.9)",
+                    opacity: scrolled ? 1 : 0,
+                    pointerEvents: scrolled ? "auto" : "none",
+                }}
+            >
+                <button
+                    type="button"
+                    onClick={() => setSidebarOpen((prev) => !prev)}
+                    className={`floating-menu-btn group ${
+                        sidebarOpen ? "active ring-1 ring-orange-400/80 shadow-[0_0_20px_rgba(255,102,0,0.7)]" : ""
+                    }`}
+                    aria-label={sidebarOpen ? "Close navigation menu" : "Open navigation menu"}
+                    aria-expanded={sidebarOpen}
+                >
+                    {sidebarOpen ? <X className="w-4 h-4 sm:w-5 sm:h-5 text-orange-300" /> : <Menu className="w-4 h-4 sm:w-5 sm:h-5" />}
+                    <span>{sidebarOpen ? "Close" : "Menu"}</span>
+                </button>
+            </div>
+
+            {/* Ambient Click-outside Backdrop Overlay */}
+            <div
+                className={`fixed inset-0 z-40 transition-opacity duration-300 ${
+                    sidebarOpen
+                        ? "opacity-100 pointer-events-auto bg-black/40 backdrop-blur-[2px]"
+                        : "opacity-0 pointer-events-none"
+                }`}
+                onClick={() => setSidebarOpen(false)}
+                aria-hidden="true"
+            />
+
+            {/* Floating Liquid Morphism Dropdown Menu Card (Anchored top-right beneath Menu button) */}
+            <div
+                className="spooky-liquid-menu-tab fixed z-50 w-56 sm:w-64 flex flex-col items-center p-4 sm:p-5 overflow-y-auto"
+                style={{
+                    top: scrolled ? "62px" : "72px",
+                    right: scrolled ? "16px" : "20px",
+                    maxHeight: "calc(100vh - 5.5rem)",
+                    transformOrigin: "top right",
+                    transform: sidebarOpen ? "scale(1) translateY(0)" : "scale(0.92) translateY(-10px)",
+                    opacity: sidebarOpen ? 1 : 0,
+                    pointerEvents: sidebarOpen ? "auto" : "none",
+                    transition: "transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease, top 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                }}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Navigation Menu"
+            >
+                {/* Header: Centered OSL Logo */}
+                <div className="w-full flex items-center justify-center mb-3">
+                    {/* OSL Logo */}
+                    <Link
+                        to="/"
+                        title={data.site.siteMetadata.title}
+                        onClick={() => setSidebarOpen(false)}
+                        className="inline-block relative group mx-auto"
+                    >
+                        <Logo className="w-12 sm:w-14" />
+                        <div className="absolute inset-0 rounded-full bg-orange-600/30 blur-lg pointer-events-none group-hover:bg-orange-500/50 transition-all" />
+                    </Link>
+                </div>
+
+                {/* Navigation Links in Center */}
+                <div className="w-full py-1 text-center">
+                    <List
+                        name="floating-nav"
+                        className="floating-nav"
+                        current={currentLocation}
+                        currentTheme={currentTheme}
+                        switchTheme={switchTheme}
+                        themes={themes}
+                        withThemeSwitch={false}
+                        liClassName="block my-1.5"
+                        sidebarOpen={sidebarOpen}
+                        onItemClick={() => setSidebarOpen(false)}
+                    />
+                </div>
+            </div>
+
+            {/* Main Navbar (Shown at top of page, hides smoothly when scrolled) */}
+            <div
+                className="duration-300 transition-all flex justify-between items-center z-20 fixed w-full nav py-4 sm:py-5 px-8 sm:px-16"
+                style={{
+                    transform: scrolled ? "translateY(-100%)" : "translateY(0)",
+                    opacity: scrolled ? 0 : 1,
+                    pointerEvents: scrolled ? "none" : "auto",
+                    transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease",
                 }}
                 ref={navbar}
             >
-                <button
-                    className="absolute text-primary outline-0 lg:hidden"
-                    style={{
-                        transform: "translateY(-50%)",
-                        top: "50%",
-                        left: "10px",
-                    }}
-                    onClick={() => {
-                        setSidebarOpen(true)
-                    }}
+
+                {/* Clean OSL Logo on the Left */}
+                <Link
+                    to="/"
+                    title={data.site.siteMetadata.title}
+                    className="logo-glow-wrapper group relative flex items-center z-10 transition-opacity duration-300"
                 >
-                    <Menu />
-                </button>
-                <SideBar open={sidebarOpen} onChange={setSidebarOpen}>
-                    <div className="bg-bg h-full flex flex-col justify-center relative">
-                        <div className="absolute top-0 my-4 text-center w-full">
-                            <Link
-                                to="/"
-                                title={data.site.siteMetadata.title}
-                                className="inline-block"
-                            >
-                                <Logo
-                                    className={`duration-300 transition-all ${
-                                        scrolled ? "w-12" : "w-16"
-                                    }`}
-                                />
-                            </Link>
-                        </div>
-                        <div className="text-center">
-                            <List
-                                name="sidebar-nav"
-                                current={currentLocation}
-                                currentTheme={currentTheme}
-                                switchTheme={switchTheme}
-                                themes={themes}
-                                withThemeSwitch={allowThemeSwitch}
-                                liClassName="block my-2"
-                            />
-                        </div>
+                    <div className="relative">
+                        <Logo className="w-12 sm:w-14" />
+                        {/* Spooky Jack-o'-lantern Halo Aura */}
+                        <div className="absolute inset-0 rounded-full bg-orange-600/20 blur-md pointer-events-none group-hover:bg-orange-500/40 transition-all duration-300" />
                     </div>
-                </SideBar>
-                <Link to="/" title={data.site.siteMetadata.title} className="logo-glow-wrapper">
-                    <Logo
-                        className={`duration-300 transition-all ${
-                            scrolled ? "w-12" : "w-16"
-                        }`}
-                    />
                 </Link>
-                <div className="hidden lg:block">
+
+                {/* Mobile Menu Button on the Right when at the top */}
+                <div className="block lg:hidden z-10">
+                    <button
+                        type="button"
+                        onClick={() => setSidebarOpen((prev) => !prev)}
+                        className={`floating-menu-btn group ${
+                            sidebarOpen ? "active ring-1 ring-orange-400/80 shadow-[0_0_20px_rgba(255,102,0,0.7)]" : ""
+                        }`}
+                        aria-label={sidebarOpen ? "Close navigation menu" : "Open navigation menu"}
+                        aria-expanded={sidebarOpen}
+                    >
+                        {sidebarOpen ? <X className="w-4 h-4 text-orange-300" /> : <Menu className="w-4 h-4" />}
+                        <span>{sidebarOpen ? "Close" : "Menu"}</span>
+                    </button>
+                </div>
+
+                {/* Desktop Nav Links */}
+                <div className="hidden lg:block z-10">
                     <List
                         name="navbar"
                         className="nav-links flex"
@@ -145,11 +238,11 @@ const Navbar: React.FC<NavbarProps> = ({
                         currentTheme={currentTheme}
                         switchTheme={switchTheme}
                         themes={themes}
-                        withThemeSwitch={allowThemeSwitch}
+                        withThemeSwitch={false}
                     />
                 </div>
-                <div className="absolute line h-px left-0 bottom-0 bg-gradient-primary"></div>
             </div>
+
             {navPlaceholder && (
                 <div style={{ height: `${navbarHeight}px` }}></div>
             )}
