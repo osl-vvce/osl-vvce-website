@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react"
 import { Button } from "./ui"
 import Img from "gatsby-image"
 import { ArrowRight } from "react-feather"
+import { PumpkinIcon } from "./spooky-icons"
+import SpookyCard from "./spooky-card"
 
 import Parallax from "../utils/parallax"
 import { IndexPageQuery_portfolio_edges_node } from "../pages/__generated__/IndexPageQuery"
@@ -39,8 +41,8 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
 
     useEffect(() => {
         transform.current = Math.min(getWindowHeight() / 2, 300) * Math.max(0, state.percentage - percentageThreshold);
-        
-        if(getWindowWidth() < 1024) {
+
+        if (getWindowWidth() < 1024) {
             updateState({
                 animated: true
             })
@@ -55,9 +57,8 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
         <Parallax changePercentage={updateState}>
             <div className="large-container mx-auto">
                 <div
-                    className={`my-4 py-8 lg:py-24 portfolio-item md:flex ${
-                        state.animated ? "begin-animation" : ""
-                    } ${even ? "even flex-row-reverse" : ""}`}
+                    className={`my-4 py-8 lg:py-24 portfolio-item md:flex ${state.animated ? "begin-animation" : ""
+                        } ${even ? "even flex-row-reverse" : ""}`}
                 >
                     <div className="relative flex-1">
                         <div
@@ -66,30 +67,38 @@ export const ItemPortfolio: React.FC<ItemPortfolioProps> = ({ data, even }) => {
                                 transform: `translate(0px,${transform.current}px)`,
                             }}
                         >
-                            <Img
-                                fluid={
-                                    data.frontmatter.image.childImageSharp.fluid
-                                }
-                                alt={data.frontmatter.title}
-                            />
+                            <SpookyCard variant="frame" className="rounded-xl overflow-hidden p-1.5">
+                                <Img
+                                    fluid={
+                                        data.frontmatter.image.childImageSharp.fluid
+                                    }
+                                    alt={data.frontmatter.title}
+                                    className="rounded-lg"
+                                />
+                            </SpookyCard>
                         </div>
                     </div>
-                    <div className="flex-1 flex md:px-4 lg:px-6 items-center">
+                    <div className="flex-1 flex md:px-6 lg:px-10 items-center">
                         <div
-                            className={`flex flex-1 flex-wrap  ${
-                                even ? "md:justify-end md:text-right" : ""
-                            }`}
+                            className={`flex flex-1 flex-wrap ${even ? "md:justify-end md:text-right" : ""
+                                }`}
                         >
-                            <h3 className="text-color-1 text-5xl font-black to-up">
+                            <div className="w-full mb-2">
+                                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase spooky-badge">
+                                    <PumpkinIcon className="w-3.5 h-3.5 mr-1.5 text-orange-400" />
+                                    <span>Open Source Project</span>
+                                </span>
+                            </div>
+                            <h3 className="font-spooky spooky-headline text-4xl sm:text-5xl font-black to-up w-full">
                                 {data.frontmatter.title}
                             </h3>
-                            <p className="lg:mt-4 to-up">
+                            <p className="my-4 text-gray-300 text-base sm:text-lg leading-relaxed to-up w-full font-normal">
                                 {data.frontmatter.description}
                             </p>
                             <Button
                                 to={data.fields.slug}
                                 label={`View ${data.frontmatter.title}`}
-                                title={"View"}
+                                title={"EXAMINE CODE"}
                                 iconRight={<ArrowRight />}
                             />
                         </div>

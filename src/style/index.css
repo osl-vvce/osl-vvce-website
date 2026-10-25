@@ -2,12 +2,115 @@
 @import "tailwindcss/utilities";
 @import "tailwindcss/components";
 
+html,
 body {
-    font-family: "Raleway", sans-serif;
+    font-family: "Plus Jakarta Sans", "Raleway", sans-serif;
+    background-color: #0e0916;
+    color: #f3f4f6;
+    overflow-x: hidden;
+    cursor: url('/images/skeleton-pointer.png') 2 1, auto;
+}
+
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+.btn,
+select,
+.cursor-pointer,
+.spooky-card,
+.spooky-badge,
+.spooky-btn-outline,
+.spooky-trick-btn,
+.spooky-treat-btn {
+    cursor: url('/images/skeleton-pointer.png') 2 1, pointer !important;
+}
+
+.font-spooky {
+    font-family: "Cinzel", Georgia, serif;
+    letter-spacing: 0.03em;
+}
+
+.spooky-headline {
+    background: linear-gradient(180deg, #ffffff 15%, #fff6db 45%, #fed7aa 72%, #fb923c 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #ffffff !important;
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(255, 140, 0, 0.45)) !important;
+    letter-spacing: 0.04em !important;
+    display: inline-block !important;
+}
+
+/* Apply radiant Moonbeam White to Golden-Amber gradient across all page and section titles */
+.font-spooky.text-glow-orange,
+.font-spooky.text-color-1,
+.title h1,
+.title h2,
+.supports-blend .title h1,
+.theme-dark .supports-blend .title h1 {
+    background: linear-gradient(180deg, #ffffff 15%, #fff6db 45%, #fed7aa 72%, #fb923c 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #ffffff !important;
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(255, 140, 0, 0.45)) !important;
+    letter-spacing: 0.04em !important;
+    display: inline-block !important;
+}
+
+.supports-blend .title h1 span,
+.theme-dark .supports-blend .title h1 span {
+    display: none !important;
+}
+
+.hero-spooky-subtitle {
+    font-family: "Cinzel", Georgia, serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #ffeedb;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 22px rgba(255, 160, 20, 0.55);
+    line-height: 1.7;
+}
+
+/* Warm Moonbeam & Golden-Amber text palette replacing harsh orange */
+.text-color-1 {
+    color: #fed7aa !important;
+}
+
+.text-orange-400 {
+    color: #fed7aa !important;
+}
+
+.text-orange-300 {
+    color: #ffeedb !important;
+}
+
+.text-orange-200 {
+    color: #fff7ed !important;
+}
+
+.text-orange-100 {
+    color: #ffeedb !important;
+}
+
+.text-glow-orange {
+    text-shadow: 0 0 15px rgba(254, 215, 170, 0.5), 0 0 30px rgba(251, 146, 60, 0.35);
+}
+
+.text-glow-gold {
+    text-shadow: 0 0 15px rgba(255, 238, 219, 0.6);
+}
+
+.box-glow-orange {
+    box-shadow: 0 0 25px rgba(255, 119, 0, 0.25);
+}
+
+.box-glow-orange-lg {
+    box-shadow: 0 0 45px rgba(255, 119, 0, 0.35);
 }
 
 p {
-    line-height: 165%;
+    line-height: 170%;
 }
 
 .boxed {
@@ -30,40 +133,158 @@ p {
     }
 }
 
+.nav {
+    background: linear-gradient(180deg, rgba(18, 10, 24, 0.92) 0%, rgba(10, 5, 14, 0.88) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 119, 0, 0.22);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.85);
+    transition: all 0.35s ease-in-out;
+}
+
+.nav.scrolled {
+    background: rgba(10, 5, 14, 0.96) !important;
+    border-bottom: 1px solid rgba(255, 119, 0, 0.35);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.95);
+}
+
+.nav .nav-links {
+    align-items: center;
+    position: relative;
+}
+
 .nav .nav-links li {
-    @apply relative inline-block mx-2;
+    @apply relative inline-block;
+    margin-left: 0.35rem;
+    margin-right: 0.35rem;
 }
 
-.nav .nav-links li a {
-    @apply inline-block p-1 relative z-10;
+/* Dynamic Moving Orange Tab Indicator (Single smoothly gliding capsule, eliminates double rings) */
+.nav-dynamic-indicator {
+    position: absolute;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, rgba(255, 110, 0, 0.42) 0%, rgba(180, 25, 0, 0.48) 100%);
+    border: 1.5px solid rgba(255, 150, 0, 0.95);
+    box-shadow: 0 0 18px rgba(255, 100, 0, 0.7), inset 0 0 10px rgba(255, 140, 0, 0.45);
+    pointer-events: none;
+    z-index: 5;
+    transition: left 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), top 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), height 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
 }
 
-.nav .nav-links li:before {
-    content: "";
-    @apply absolute w-0 h-0 rounded-full bg-primary left-0 right-0 bottom-0 top-0 m-auto opacity-25;
-    transition: width 0.25s, height 0.25s;
+/* Compact Gothic Nav Links */
+.nav-item-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 1rem;
+    border-radius: 9999px;
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #ffedd5 !important;
+    border: 1px solid transparent;
+    transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease;
+    position: relative;
+    z-index: 10;
+    text-decoration: none !important;
 }
 
+/* Nav link hover & active: Text glow without creating duplicate border rings (handled by dynamic sliding indicator) */
+.nav .nav-links .nav-item-link:hover,
+.floating-nav .nav-item-link:hover,
+.sidebar-nav .nav-item-link:hover {
+    color: #ffffff !important;
+    text-shadow: 0 0 14px rgba(255, 140, 0, 1), 0 0 25px rgba(255, 80, 0, 0.8);
+    transform: translateY(-1px);
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.nav .nav-links li.active .nav-item-link,
+.floating-nav li.active .nav-item-link,
+.sidebar-nav li.active .nav-item-link {
+    color: #ffffff !important;
+    text-shadow: 0 0 14px rgba(255, 140, 0, 1), 0 0 25px rgba(255, 80, 0, 0.8);
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Floating Menu and Logo Buttons (Shown when scrolled, matching active capsule gradient) */
+.floating-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.48rem 1.15rem;
+    border-radius: 9999px;
+    font-family: "Cinzel", Georgia, serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #fff7ed !important;
+    background: linear-gradient(135deg, rgba(255, 85, 0, 0.28) 0%, rgba(138, 12, 0, 0.35) 100%) !important;
+    border: 1px solid rgba(255, 153, 0, 0.75) !important;
+    box-shadow: 0 0 16px rgba(255, 85, 0, 0.55), inset 0 0 10px rgba(255, 136, 0, 0.3), 0 8px 25px rgba(0, 0, 0, 0.85) !important;
+    text-shadow: 0 0 12px rgba(255, 136, 0, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.floating-menu-btn:hover {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, rgba(255, 119, 0, 0.42) 0%, rgba(180, 20, 0, 0.48) 100%) !important;
+    border-color: #ff9500 !important;
+    box-shadow: 0 0 24px rgba(255, 119, 0, 0.75), inset 0 0 14px rgba(255, 153, 0, 0.4), 0 8px 30px rgba(0, 0, 0, 0.95) !important;
+    transform: translateY(-2px) scale(1.04);
+}
+
+.floating-menu-btn svg {
+    color: #fdba74;
+    transition: color 0.2s ease;
+}
+
+.floating-menu-btn:hover svg {
+    color: #ffffff;
+    filter: drop-shadow(0 0 8px #ff7700);
+}
+
+.floating-logo-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none !important;
+}
+
+.floating-logo-btn:hover {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: translateY(-2px) scale(1.06);
+}
+
+/* Remove old circular blob from before */
+.nav .nav-links li:before,
 .nav .nav-links li.active:before,
 .nav .nav-links li:hover:before {
-    @apply w-8 h-8;
-}
-
-.nav .nav-links .theme-switcher:before {
-    display: none;
-}
-
-.nav .line {
-    width: 0;
-    transition: width 0.5s;
-}
-
-.nav.scrolled .line {
-    @apply w-full;
+    display: none !important;
+    content: none !important;
 }
 
 .title h1 {
-    @apply text-color-1 font-black;
+    font-weight: 900;
 }
 
 .supports-blend .title h1 {
@@ -94,7 +315,8 @@ p {
 }
 
 .btn {
-    @apply h-12 px-6 outline-none inline-flex relative overflow-hidden items-center;
+    @apply h-12 px-6 outline-none inline-flex relative overflow-hidden items-center font-bold tracking-wide rounded-lg;
+    transition: all 0.3s ease;
 }
 
 .btn.disabled {
@@ -109,8 +331,7 @@ p {
     content: "";
     @apply absolute w-full h-full top-0;
     left: 100%;
-    transition: left 0.25s;
-    transition-timing-function: cubic-bezier(1, 2.13, 1, -0.1);
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
 }
 
@@ -127,17 +348,222 @@ p {
 }
 
 .btn-primary {
-    @apply bg-primary my-4;
-    color: #fff;
+    background: linear-gradient(135deg, #ffffff 0%, #fef3c7 35%, #fed7aa 70%, #fb923c 100%);
+    color: #0c0712 !important;
+    font-weight: 800;
+    border: 1px solid rgba(254, 215, 170, 0.6);
+    box-shadow: 0 4px 20px rgba(254, 215, 170, 0.35);
 }
 
 .btn-primary:before {
-    @apply bg-secondary;
+    background: linear-gradient(135deg, #ffffff 0%, #fffbeb 35%, #fde68a 70%, #fbbf24 100%);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    box-shadow: 0 6px 30px rgba(254, 215, 170, 0.6);
+    transform: translateY(-2px);
 }
 
 .btn-primary:hover:before,
 .btn-primary:focus:before {
     left: 0;
+}
+
+/* Spooky Halloween Cards - Rustic Wood & Parchment Frame */
+.spooky-card {
+    background: radial-gradient(ellipse at 50% 50%, #fffdf8 0%, #fef5e7 65%, #f6deb8 100%) !important;
+    border: 4px solid #1c0e07 !important;
+    border-radius: 12px;
+    box-shadow:
+        0 0 0 3px #ea580c,
+        0 0 0 7px #1c0e07,
+        0 16px 36px rgba(0, 0, 0, 0.8),
+        inset 0 0 25px rgba(234, 88, 12, 0.22) !important;
+    color: #26130b !important;
+    position: relative;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: visible;
+}
+
+.spooky-card:hover {
+    transform: translateY(-4px) scale(1.008);
+    box-shadow:
+        0 0 0 3px #f97316,
+        0 0 0 7px #1c0e07,
+        0 22px 48px rgba(0, 0, 0, 0.9),
+        0 0 30px rgba(255, 119, 0, 0.35),
+        inset 0 0 35px rgba(234, 88, 12, 0.32) !important;
+}
+
+/* Headings inside parchment card */
+.spooky-card h1,
+.spooky-card h2,
+.spooky-card h3,
+.spooky-card h4 {
+    color: #1a0802 !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Paragraphs and descriptions */
+.spooky-card p {
+    color: #3b1d11 !important;
+}
+
+/* Card form inputs with glowing amber focus */
+.spooky-modern-card input,
+.spooky-modern-card textarea {
+    background: rgba(10, 4, 15, 0.75) !important;
+    color: #fef3c7 !important;
+    border: 1px solid rgba(255, 120, 0, 0.35) !important;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.spooky-modern-card input:focus,
+.spooky-modern-card textarea:focus {
+    border-color: #f97316 !important;
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.35) !important;
+    background: rgba(15, 6, 22, 0.9) !important;
+}
+
+.spooky-modern-card input::placeholder,
+.spooky-modern-card textarea::placeholder {
+    color: rgba(255, 160, 60, 0.45) !important;
+}
+
+.spooky-card-signboard {
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.spooky-badge {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #ffa726;
+    backdrop-filter: none !important;
+}
+
+.spooky-btn-outline {
+    background: rgba(10, 5, 2, 0.75);
+    border: 1px solid rgba(255, 119, 0, 0.45);
+    color: #ffb74d;
+    transition: all 0.3s ease;
+}
+
+.spooky-btn-outline:hover {
+    border-color: #ff9500;
+    background: rgba(255, 119, 0, 0.15);
+    box-shadow: 0 0 20px rgba(255, 119, 0, 0.35);
+}
+
+.spooky-icon-box {
+    background: rgba(255, 119, 0, 0.08);
+    border: 1px solid rgba(255, 119, 0, 0.3);
+}
+
+.spooky-trick-btn {
+    background: rgba(70, 10, 10, 0.45);
+    border: 1px solid rgba(239, 68, 68, 0.45);
+    color: #fca5a5;
+    transition: all 0.3s ease;
+}
+
+.spooky-trick-btn:hover {
+    background: rgba(120, 20, 20, 0.65);
+    border-color: #ef4444;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.35);
+}
+
+.spooky-treat-btn {
+    background: rgba(70, 35, 10, 0.45);
+    border: 1px solid rgba(255, 119, 0, 0.45);
+    color: #fdba74;
+    transition: all 0.3s ease;
+}
+
+.spooky-treat-btn:hover {
+    background: rgba(120, 55, 15, 0.65);
+    border-color: #ff7700;
+    box-shadow: 0 0 20px rgba(255, 119, 0, 0.35);
+}
+
+/* Atmospheric Animations */
+@keyframes flame-flicker {
+
+    0%,
+    100% {
+        opacity: 0.95;
+        filter: drop-shadow(0 0 12px #ff7700);
+    }
+
+    30% {
+        opacity: 0.75;
+        filter: drop-shadow(0 0 6px #ff5500);
+    }
+
+    60% {
+        opacity: 1;
+        filter: drop-shadow(0 0 20px #ffa726);
+    }
+
+    85% {
+        opacity: 0.85;
+        filter: drop-shadow(0 0 10px #ff7700);
+    }
+}
+
+.animate-flicker {
+    animation: flame-flicker 2.5s infinite ease-in-out;
+}
+
+@keyframes float-ember {
+    0% {
+        transform: translateY(0) translateX(0) scale(0.6);
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0.8;
+    }
+
+    70% {
+        opacity: 0.6;
+        transform: translateY(-60px) translateX(15px) scale(1);
+    }
+
+    100% {
+        transform: translateY(-120px) translateX(-10px) scale(0.4);
+        opacity: 0;
+    }
+}
+
+.ember-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: #ff7700;
+    box-shadow: 0 0 10px #ff9500, 0 0 20px #ff5500;
+    pointer-events: none;
+    animation: float-ember 5s infinite ease-in;
+}
+
+
+
+.logo-glow-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.logo-glow-wrapper:after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 119, 0, 0.35) 0%, transparent 70%);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    animation: flame-flicker 3s infinite ease-in-out;
 }
 
 .portfolio-item .image {
@@ -190,89 +616,245 @@ p {
     @apply w-full;
 }
 
+/* ========================================================
+   POST CONTENT & ARTICLE LIQUID MORPHIC GLASS CONTAINER
+   Ensures crystal-clear readability over vibrant Halloween wallpaper
+   ======================================================== */
+.post-content {
+    background: linear-gradient(
+        160deg,
+        rgba(24, 10, 32, 0.94) 0%,
+        rgba(18, 8, 26, 0.96) 45%,
+        rgba(10, 4, 16, 0.98) 100%
+    ) !important;
+    border: 1px solid rgba(255, 175, 75, 0.4) !important;
+    border-radius: 1.75rem !important;
+    padding: 2.25rem 2.5rem !important;
+    box-shadow: 
+        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.3),
+        inset 0 0 35px rgba(255, 120, 0, 0.08),
+        0 24px 60px -10px rgba(0, 0, 0, 0.95),
+        0 0 35px rgba(255, 110, 0, 0.2) !important;
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+    color: #fffdf5 !important;
+    margin-top: 2rem !important;
+    margin-bottom: 3rem !important;
+    position: relative;
+    z-index: 10;
+}
+
+@media (max-width: 640px) {
+    .post-content {
+        padding: 1.5rem 1.25rem !important;
+        border-radius: 1.25rem !important;
+    }
+}
+
+.blog-wall-content {
+    background: linear-gradient(
+        160deg,
+        rgba(26, 12, 36, 0.94) 0%,
+        rgba(18, 8, 26, 0.96) 45%,
+        rgba(12, 5, 18, 0.98) 100%
+    ) !important;
+    border: 1px solid rgba(255, 175, 75, 0.45) !important;
+    border-radius: 1.75rem !important;
+    box-shadow: 
+        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.3),
+        inset 0 0 35px rgba(255, 120, 0, 0.08),
+        0 24px 60px -10px rgba(0, 0, 0, 0.95),
+        0 0 35px rgba(255, 110, 0, 0.22) !important;
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+    color: #fffdf5 !important;
+}
+
+.blog-wall-content h1 {
+    background: linear-gradient(180deg, #ffffff 15%, #fff6db 45%, #fed7aa 72%, #fb923c 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #ffffff !important;
+    font-family: "Cinzel", Georgia, serif !important;
+    font-weight: 900 !important;
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(255, 140, 0, 0.45)) !important;
+    display: inline-block;
+}
+
+.blog-wall-content p {
+    color: #fed7aa !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.post-content p,
+.post-content li {
+    color: #fffdf5 !important;
+    font-weight: 450 !important;
+    line-height: 1.85 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+    font-size: 1.1rem;
+}
+
 .post-content p {
-    @apply my-3;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
 }
 
 .post-content h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    @apply font-black text-color-2 my-4;
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+    background: linear-gradient(180deg, #ffffff 15%, #fff6db 45%, #fed7aa 72%, #fb923c 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #ffffff !important;
+    font-family: "Cinzel", Georgia, serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.035em !important;
+    margin-top: 2rem;
+    margin-bottom: 0.85rem;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 18px rgba(255, 140, 0, 0.4)) !important;
+    display: inline-block;
 }
 
 .post-content h1 {
-    @apply text-5xl;
+    font-size: 2.5rem;
 }
 
 .post-content h2 {
-    @apply text-4xl;
+    font-size: 2rem;
+    border-bottom: 1px solid rgba(255, 140, 0, 0.3);
+    padding-bottom: 0.5rem;
 }
 
 .post-content h3 {
-    @apply text-3xl;
+    font-size: 1.65rem;
 }
 
 .post-content h4 {
-    @apply text-2xl;
+    font-size: 1.45rem;
 }
 
-.post-content h5 {
-    @apply text-xl;
-}
-
-.post-content h5 {
-    @apply text-lg;
+.post-content h5,
+.post-content h6 {
+    font-size: 1.2rem;
 }
 
 .post-content hr {
-    @apply my-4 border-medium;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-color: rgba(255, 140, 0, 0.35) !important;
 }
 
 .post-content ul {
     list-style: disc;
+    margin-left: 1.75rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .post-content ol {
     list-style: decimal;
-}
-
-.post-content ul,
-.post-content ol {
-    @apply ml-4;
-}
-
-.post-content ul ul,
-.post-content ol ol {
-    @apply ml-3;
+    margin-left: 1.75rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .post-content li {
-    @apply my-2;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
+    padding-left: 0.25rem;
 }
 
-.post-content table {
-    @apply w-full my-6;
+.post-content li::marker {
+    color: #ff9900 !important;
+    font-size: 1.15em;
 }
 
-.post-content table tr {
-    border-bottom: 2px solid #eee;
-    @apply border-medium;
+.post-content strong,
+.post-content b {
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 10px rgba(255, 160, 0, 0.45);
 }
 
-.theme-dark .post-content table tr {
-    border-bottom: 2px solid #444;
+.post-content a {
+    color: #fb923c !important;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
 
-.post-content table tr td,
-.post-content table tr th {
-    @apply p-2 py-3 text-left;
+.post-content a:hover {
+    color: #fdba74 !important;
+    text-shadow: 0 0 12px rgba(255, 153, 0, 0.85);
+}
+
+.post-content code {
+    background: rgba(20, 8, 30, 0.85) !important;
+    color: #fdba74 !important;
+    border: 1px solid rgba(255, 140, 0, 0.35) !important;
+    padding: 0.2rem 0.45rem;
+    border-radius: 0.375rem;
+    font-size: 0.9em;
+}
+
+.post-content pre {
+    background: rgba(16, 7, 24, 0.95) !important;
+    border: 1px solid rgba(255, 140, 0, 0.35) !important;
+    border-radius: 1rem !important;
+    padding: 1.25rem !important;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(0, 0, 0, 0.8) !important;
+}
+
+.post-content pre code {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
 }
 
 .post-content blockquote {
-    @apply border-l-4 border-primary p-3;
+    border-left: 4px solid #ea580c !important;
+    background: rgba(255, 110, 0, 0.08) !important;
+    border-radius: 0 0.85rem 0.85rem 0;
+    padding: 1rem 1.25rem !important;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    color: #ffedd5 !important;
+    font-style: italic;
+}
+
+.post-content table {
+    width: 100%;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-collapse: collapse;
+    background: rgba(20, 8, 30, 0.6);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 140, 0, 0.25);
+}
+
+.post-content table tr {
+    border-bottom: 1px solid rgba(255, 140, 0, 0.2);
+}
+
+.post-content table tr th {
+    background: rgba(45, 18, 65, 0.7);
+    color: #ffa500;
+    font-family: "Cinzel", Georgia, serif;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 700;
+}
+
+.post-content table tr td {
+    padding: 0.75rem 1rem;
+    color: #fef3c7;
 }
 
 .post-content iframe {
@@ -299,6 +881,7 @@ h6 {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -312,4 +895,1061 @@ h6 {
 
 #mdx a {
     text-decoration: underline;
+}
+
+
+
+/* ==========================================================================
+   OSL HALLOWEEN - BATS FLYING OUT & SCARY INTRO ANIMATIONS
+   ========================================================================== */
+
+/* Bat Wing Flapping */
+@keyframes bat-wing-flap-left {
+
+    0%,
+    100% {
+        transform: rotate(38deg) scaleY(1);
+    }
+
+    50% {
+        transform: rotate(-44deg) scaleY(0.75);
+    }
+}
+
+@keyframes bat-wing-flap-right {
+
+    0%,
+    100% {
+        transform: rotate(-38deg) scaleY(1);
+    }
+
+    50% {
+        transform: rotate(44deg) scaleY(0.75);
+    }
+}
+
+.animate-bat-wing-left {
+    animation: bat-wing-flap-left 0.13s ease-in-out infinite;
+}
+
+.animate-bat-wing-right {
+    animation: bat-wing-flap-right 0.13s ease-in-out infinite;
+}
+
+/* Bat Flight Path 1: Straight at screen (Screech / Jumpscare) */
+@keyframes bat-fly-straight {
+    0% {
+        transform: translate(-50%, -50%) scale(0.04) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(5.5) rotate(-6deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-straight {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-straight 1.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+    opacity: 0;
+}
+
+/* Bat Flight Path 2: Delayed straight attack */
+@keyframes bat-fly-straight-delayed {
+    0% {
+        transform: translate(-50%, -50%) scale(0.05) rotate(4deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-45%, -55%) scale(6) rotate(12deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-straight-delayed {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-straight-delayed 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+}
+
+/* Left Swoop Trajectories */
+@keyframes bat-fly-left-1 {
+    0% {
+        transform: translate(0, 0) scale(0.08) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-65vw, -45vh) scale(3.2) rotate(-28deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-left-1 {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-left-1 1.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-left-2 {
+    0% {
+        transform: translate(0, 0) scale(0.06) rotate(5deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-70vw, -15vh) scale(3.8) rotate(-18deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-left-2 {
+    top: 52%;
+    left: 48%;
+    animation: bat-fly-left-2 1.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-left-3 {
+    0% {
+        transform: translate(0, 0) scale(0.05);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-55vw, 40vh) scale(2.8) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-left-3 {
+    top: 48%;
+    left: 52%;
+    animation: bat-fly-left-3 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-left-4 {
+    0% {
+        transform: translate(0, 0) scale(0.06);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-60vw, -60vh) scale(3) rotate(-35deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-left-4 {
+    top: 51%;
+    left: 49%;
+    animation: bat-fly-left-4 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+/* Right Swoop Trajectories */
+@keyframes bat-fly-right-1 {
+    0% {
+        transform: translate(0, 0) scale(0.08) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(65vw, -45vh) scale(3.4) rotate(26deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-right-1 {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-right-1 1.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-right-2 {
+    0% {
+        transform: translate(0, 0) scale(0.06) rotate(-4deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(72vw, -10vh) scale(4) rotate(22deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-right-2 {
+    top: 49%;
+    left: 51%;
+    animation: bat-fly-right-2 1.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-right-3 {
+    0% {
+        transform: translate(0, 0) scale(0.05);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(58vw, 38vh) scale(2.9) rotate(-12deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-right-3 {
+    top: 52%;
+    left: 48%;
+    animation: bat-fly-right-3 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-right-4 {
+    0% {
+        transform: translate(0, 0) scale(0.06);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(62vw, -58vh) scale(3.1) rotate(32deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-right-4 {
+    top: 48%;
+    left: 52%;
+    animation: bat-fly-right-4 1.95s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+/* High and Low flight arcs */
+@keyframes bat-fly-high-left {
+    0% {
+        transform: translate(0, 0) scale(0.04);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-45vw, -65vh) scale(2.6) rotate(-24deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-high-left {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-high-left 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-high-right {
+    0% {
+        transform: translate(0, 0) scale(0.04);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(45vw, -65vh) scale(2.6) rotate(24deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-high-right {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-high-right 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-low-left {
+    0% {
+        transform: translate(0, 0) scale(0.05);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50vw, 55vh) scale(3.2) rotate(18deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-low-left {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-low-left 1.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes bat-fly-low-right {
+    0% {
+        transform: translate(0, 0) scale(0.05);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(50vw, 55vh) scale(3.2) rotate(-18deg);
+        opacity: 0;
+    }
+}
+
+.animate-bat-fly-low-right {
+    top: 50%;
+    left: 50%;
+    animation: bat-fly-low-right 1.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+}
+
+/* Spooky Lightning Flash */
+@keyframes spooky-lightning {
+
+    0%,
+    38%,
+    42%,
+    78%,
+    82%,
+    100% {
+        opacity: 0;
+    }
+
+    39%,
+    41% {
+        opacity: 0.85;
+    }
+
+    79%,
+    81% {
+        opacity: 0.95;
+    }
+}
+
+.animate-spooky-lightning {
+    animation: spooky-lightning 3.2s ease-in-out infinite;
+}
+
+/* Demon Eyes Lurking */
+@keyframes demon-eyes-glow {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    30%,
+    75% {
+        opacity: 0.95;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.15;
+        transform: scale(0.95) scaleY(0.1);
+        /* Blink */
+    }
+
+    55% {
+        opacity: 0.95;
+        transform: scale(1);
+    }
+}
+
+.animate-demon-eyes {
+    animation: demon-eyes-glow 2.8s ease-in-out infinite;
+}
+
+/* Fog Drift */
+@keyframes fog-drift {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 800px 0;
+    }
+}
+
+.animate-fog-drift {
+    animation: fog-drift 20s linear infinite;
+}
+
+/* 404 Ghost Floating Bob & Sway */
+@keyframes ghost-float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-16px) rotate(-2.5deg);
+    }
+}
+
+.animate-ghost-float {
+    animation: ghost-float 3.5s ease-in-out infinite;
+}
+
+/* 404 Halloween Return Button */
+.spooky-realm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.9rem 2.4rem;
+    background: linear-gradient(180deg, #ffffff 0%, #fff6db 30%, #fed7aa 70%, #fb923c 100%);
+    color: #0c0712 !important;
+    font-family: "Cinzel", Georgia, serif;
+    font-weight: 900;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    border: 3px solid #000000;
+    box-shadow: 0 0 25px rgba(254, 215, 170, 0.5), 0 8px 25px rgba(0, 0, 0, 0.85);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.spooky-realm-btn:hover {
+    background: linear-gradient(180deg, #ffffff 0%, #ffffff 35%, #fef3c7 70%, #fed7aa 100%);
+    border-color: #000000;
+    box-shadow: 0 0 35px rgba(254, 215, 170, 0.8), 0 12px 30px rgba(0, 0, 0, 0.9);
+    transform: translateY(-2px) scale(1.04);
+    color: #0c0712 !important;
+}
+
+.spooky-realm-btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+@media (max-width: 640px) {
+    .spooky-realm-btn {
+        padding: 0.65rem 1.5rem;
+        font-size: 0.8rem;
+        gap: 0.45rem;
+    }
+}
+
+/* ========================================================
+   HALLOWEEN CARTOON BANNER BUTTON
+   Faithfully reproduces the vector Jack-o'-lantern &
+   chevron-striped orange banner illustration
+   ======================================================== */
+.halloween-banner-btn {
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.6rem 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: visible;
+    background: transparent;
+    border: none;
+    outline: none;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55));
+}
+
+.halloween-banner-btn:hover,
+.halloween-banner-btn:focus {
+    transform: translateY(-2px) scale(1.02);
+    filter: drop-shadow(0 6px 20px rgba(255, 119, 0, 0.65)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.7));
+    outline: none;
+}
+
+.halloween-banner-btn:active {
+    transform: translateY(1px) scale(0.99);
+}
+
+.halloween-banner-btn.disabled,
+.halloween-banner-btn:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    filter: grayscale(0.6);
+}
+
+.halloween-banner-inner {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    height: 48px;
+    box-sizing: border-box;
+}
+
+.halloween-banner-pumpkin-wrapper {
+    position: absolute;
+    left: -20px;
+    bottom: -6px;
+    z-index: 10;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.halloween-banner-btn:hover .halloween-banner-pumpkin-wrapper {
+    transform: scale(1.08) rotate(-2deg);
+}
+
+.halloween-banner-btn:hover .pumpkin-face-glow {
+    fill: #ffea00 !important;
+    filter: drop-shadow(0 0 8px #ffb700);
+}
+
+.halloween-banner-bar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-left: 58px;
+    padding-right: 14px;
+    background: linear-gradient(180deg, #ffc038 0%, #ff9500 45%, #ff6b00 80%, #d44800 100%);
+    border-top: 3px solid #000000;
+    border-bottom: 3px solid #000000;
+    border-left: 3px solid #000000;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    box-shadow: 0 0 25px rgba(255, 119, 0, 0.65), 0 8px 25px rgba(0, 0, 0, 0.85);
+    transition: all 0.3s ease;
+}
+
+.halloween-banner-btn:hover .halloween-banner-bar {
+    background: linear-gradient(180deg, #ffd56b 0%, #ffa51f 45%, #ff7b1a 80%, #e65500 100%);
+    box-shadow: 0 0 35px rgba(255, 119, 0, 0.85), 0 12px 30px rgba(0, 0, 0, 0.9);
+}
+
+.halloween-banner-highlight {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 90% 45% at 50% 20%, rgba(255, 245, 200, 0.28) 0%, transparent 75%);
+}
+
+.halloween-banner-text-content {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.halloween-banner-text-content svg {
+    stroke: #000000;
+    color: #000000;
+    stroke-width: 2.4;
+}
+
+.halloween-banner-title {
+    font-family: "Cinzel", Georgia, serif, system-ui;
+    font-weight: 900;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    color: #0c0712 !important;
+    text-transform: uppercase;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+.halloween-banner-tail {
+    height: 100%;
+    width: 38px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    margin-left: -1px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+    .halloween-banner-inner {
+        height: 42px;
+    }
+
+    .halloween-banner-bar {
+        padding-left: 48px;
+        padding-right: 10px;
+    }
+
+    .halloween-banner-title {
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+    }
+
+    .halloween-banner-tail {
+        width: 32px;
+    }
+
+    .halloween-banner-pumpkin-wrapper {
+        left: -16px;
+        bottom: -5px;
+    }
+}
+
+/* ========================================================
+   SPOOKY IMAGE CARDS
+   Authentic Attached Picture Frames (Card 1 Frame & Card 2 Signboard)
+   ======================================================== */
+/* ========================================================
+   SPOOKY LIQUID MORPHISM GLASS CARDS
+   Ultra-fluid, frosted translucent glass with glossy specular highlights
+   and radiant Jack-o'-lantern amber ambient glow
+   ======================================================== */
+.spooky-liquid-card,
+.spooky-modern-card {
+    background: linear-gradient(
+        160deg,
+        rgba(24, 10, 32, 0.94) 0%,
+        rgba(18, 8, 26, 0.96) 45%,
+        rgba(10, 4, 16, 0.98) 100%
+    ) !important;
+    border: 1px solid rgba(255, 175, 75, 0.4) !important;
+    box-shadow: 
+        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.3),
+        inset 0 0 35px rgba(255, 120, 0, 0.08),
+        0 24px 60px -10px rgba(0, 0, 0, 0.95),
+        0 0 35px rgba(255, 110, 0, 0.2) !important;
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2rem !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+
+.spooky-liquid-card:hover,
+.spooky-modern-card:hover {
+    transform: translateY(-4px) scale(1.006) !important;
+    border-color: rgba(255, 190, 90, 0.65) !important;
+    box-shadow: 
+        inset 0 2px 4px 0 rgba(255, 255, 255, 0.45),
+        0 30px 70px -10px rgba(0, 0, 0, 0.95),
+        0 0 45px rgba(255, 130, 0, 0.28) !important;
+}
+
+/* Headings inside Liquid Cards - radiant molten gold-orange */
+.spooky-liquid-card h1,
+.spooky-liquid-card h2,
+.spooky-liquid-card h3,
+.spooky-liquid-card h4,
+.spooky-liquid-card h5,
+.spooky-modern-card h1,
+.spooky-modern-card h2,
+.spooky-modern-card h3,
+.spooky-modern-card h4,
+.spooky-modern-card h5 {
+    color: #ffa500 !important;
+    font-family: "Cinzel", Georgia, serif !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.035em !important;
+    text-shadow: 0 0 20px rgba(255, 140, 0, 0.6), 0 2px 5px rgba(0, 0, 0, 0.98) !important;
+}
+
+/* Body & description text - high-contrast creamy parchment */
+.spooky-liquid-card p,
+.spooky-liquid-card li,
+.spooky-modern-card p,
+.spooky-modern-card li {
+    color: #fffdf5 !important;
+    font-weight: 450 !important;
+    line-height: 1.85 !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95) !important;
+    font-size: 1.1rem;
+}
+
+/* Badges inside card - Clean text style without enclosing circle/pill */
+.spooky-liquid-card .spooky-badge,
+.spooky-modern-card .spooky-badge {
+    background: transparent !important;
+    color: #fb923c !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Liquid Morphic Mini-Game Buttons */
+.spooky-trick-btn {
+    background: linear-gradient(145deg, rgba(220, 38, 38, 0.85) 0%, rgba(127, 29, 29, 0.95) 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(252, 165, 165, 0.5) !important;
+    border-radius: 9999px !important;
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.4),
+        0 8px 24px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(239, 68, 68, 0.35) !important;
+    backdrop-filter: blur(12px) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.spooky-trick-btn:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    border-color: #fca5a5 !important;
+    box-shadow: 
+        inset 0 1px 3px rgba(255, 255, 255, 0.6),
+        0 12px 30px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(239, 68, 68, 0.6) !important;
+    color: #ffffff !important;
+}
+
+.spooky-treat-btn {
+    background: linear-gradient(145deg, rgba(234, 88, 12, 0.92) 0%, rgba(194, 65, 12, 0.98) 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(253, 186, 116, 0.55) !important;
+    border-radius: 9999px !important;
+    font-weight: 800 !important;
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.4),
+        0 8px 24px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(249, 115, 22, 0.45) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(12px) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.spooky-treat-btn:hover {
+    transform: translateY(-2px) scale(1.05) !important;
+    background: linear-gradient(145deg, rgba(249, 115, 22, 0.96) 0%, rgba(234, 88, 12, 1) 100%) !important;
+    border-color: rgba(255, 237, 213, 0.85) !important;
+    box-shadow: 
+        inset 0 1px 3px rgba(255, 255, 255, 0.6),
+        0 12px 30px rgba(0, 0, 0, 0.7),
+        0 0 30px rgba(249, 115, 22, 0.7) !important;
+    color: #ffffff !important;
+}
+
+/* Liquid Result Message Box */
+.spooky-result-box {
+    background: linear-gradient(145deg, rgba(30, 14, 42, 0.85) 0%, rgba(16, 7, 24, 0.92) 100%) !important;
+    border: 1px solid rgba(255, 160, 60, 0.45) !important;
+    border-radius: 1.25rem !important;
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        0 10px 30px rgba(0, 0, 0, 0.7),
+        0 0 25px rgba(255, 110, 0, 0.2) !important;
+    backdrop-filter: blur(16px) !important;
+}
+
+.spooky-result-box p {
+    color: #ffedd5 !important;
+    text-shadow: none !important;
+}
+
+/* Contact Info inside Spooky Card */
+.spooky-contact-info a {
+    color: #fb923c !important;
+    font-weight: 700;
+}
+
+.spooky-contact-info a:hover {
+    color: #fdba74 !important;
+    text-decoration: underline;
+}
+
+.spooky-modern-card .icon {
+    color: #fb923c !important;
+}
+
+/* ========================================================
+   INTERACTIVE 3D PARALLAX TILT & CURSOR SPOTLIGHT
+   Dynamic card movement tracking mouse coordinates
+   ======================================================== */
+.interactive-spooky-card {
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transform: perspective(1000px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg)) translateY(var(--card-lift, 0px)) !important;
+    transition: transform 0.1s ease-out, box-shadow 0.25s ease, border-color 0.25s ease !important;
+    will-change: transform;
+}
+
+.interactive-spooky-card:hover {
+    --card-lift: -8px;
+    border-color: rgba(255, 185, 75, 0.75) !important;
+    box-shadow: 
+        inset 0 2px 4px 0 rgba(255, 255, 255, 0.45),
+        0 28px 65px -10px rgba(0, 0, 0, 0.95),
+        0 0 45px rgba(255, 130, 0, 0.35) !important;
+}
+
+.interactive-spooky-card:not(:hover) {
+    --card-lift: 0px;
+    --rotate-x: 0deg;
+    --rotate-y: 0deg;
+    --tilt-opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.5s ease, border-color 0.5s ease !important;
+}
+
+/* Dynamic Interactive Mouse Spotlight Overlay */
+.card-dynamic-spotlight {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: radial-gradient(
+        380px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 150, 30, 0.24) 0%,
+        rgba(255, 100, 0, 0.08) 45%,
+        transparent 75%
+    );
+    opacity: var(--tilt-opacity, 0);
+    transition: opacity 0.3s ease;
+    z-index: 5;
+}
+
+/* CRITICAL: Disable all global underlines on card links on hover */
+.blog-item a,
+.blog-item a:hover,
+.blog-item a:focus,
+.blog-item a *,
+.blog-item a:hover *,
+.interactive-spooky-card a,
+.interactive-spooky-card a:hover,
+.interactive-spooky-card a:focus,
+.interactive-spooky-card a *,
+.interactive-spooky-card a:hover *,
+.spooky-modern-card a,
+.spooky-modern-card a:hover,
+.spooky-liquid-card a,
+.spooky-liquid-card a:hover {
+    text-decoration: none !important;
+}
+
+/* ========================================================
+   SPOOKY LIQUID MORPHISM DROPDOWN MENU CARD
+   Floating top-right dropdown card with rich obsidian-amber frosted glass & eerie glow
+   ======================================================== */
+.spooky-liquid-menu-tab {
+    background: linear-gradient(
+        155deg,
+        rgba(255, 140, 20, 0.16) 0%,
+        rgba(30, 12, 42, 0.92) 30%,
+        rgba(14, 5, 20, 0.98) 100%
+    ) !important;
+    border: 1px solid rgba(255, 175, 75, 0.45) !important;
+    border-radius: 1.5rem !important;
+    box-shadow: 
+        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.35),
+        inset 0 -1.5px 3px 0 rgba(0, 0, 0, 0.6),
+        0 20px 50px -10px rgba(0, 0, 0, 0.95),
+        0 0 35px rgba(255, 110, 0, 0.3) !important;
+    backdrop-filter: blur(28px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 140, 0, 0.4) transparent;
+}
+
+.spooky-liquid-menu-tab::-webkit-scrollbar {
+    width: 4px;
+}
+
+.spooky-liquid-menu-tab::-webkit-scrollbar-thumb {
+    background: rgba(255, 140, 0, 0.35);
+    border-radius: 9999px;
+}
+
+.floating-nav {
+    width: 100%;
+}
+
+.floating-nav li {
+    display: block;
+    width: 100%;
+    margin: 0.2rem 0;
+}
+
+.floating-nav .nav-item-link {
+    width: 100%;
+    justify-content: center;
+    padding: 0.38rem 0.95rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+}
+
+/* ========================================================
+   SPOOKY COMMENTS SECTION (DISQUS WRAPPER & CONTRAST CARD)
+   Ensures 100% legibility over dark Halloween wallpaper
+   ======================================================== */
+.comments-spooky-card {
+    background: linear-gradient(
+        160deg,
+        rgba(22, 9, 30, 0.98) 0%,
+        rgba(15, 6, 22, 0.98) 50%,
+        rgba(10, 4, 16, 0.99) 100%
+    );
+    border: 1px solid rgba(255, 160, 50, 0.35);
+    box-shadow: 
+        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.15),
+        inset 0 0 30px rgba(255, 110, 0, 0.05),
+        0 20px 50px -10px rgba(0, 0, 0, 0.95),
+        0 0 35px rgba(255, 110, 0, 0.18);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+.comments-spooky-card .disqus-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+#disqus_thread {
+    position: relative;
+    width: 100% !important;
+    min-height: 280px;
+}
+
+/* ========================================================
+   DISQUS LIGHT & DARK THEME ENFORCEMENT
+   Guarantees dark, crisp text in light theme / parchment mode
+   ======================================================== */
+.disqus-wrapper.parchment-mode,
+.disqus-wrapper.parchment-mode #disqus_thread,
+.disqus-wrapper.disqus-light-theme,
+.disqus-wrapper.disqus-light-theme #disqus_thread,
+.theme-light .disqus-wrapper,
+.theme-light #disqus_thread {
+    color: #18121e !important;
+    color-scheme: light !important;
+}
+
+.disqus-wrapper.obsidian-mode,
+.disqus-wrapper.obsidian-mode #disqus_thread,
+.disqus-wrapper.disqus-dark-theme,
+.disqus-wrapper.disqus-dark-theme #disqus_thread,
+.theme-dark .disqus-wrapper,
+.theme-dark #disqus_thread {
+    color: #f3f4f6 !important;
+    color-scheme: dark !important;
+}
+
+/* ========================================================
+   GLOBAL LIGHT THEME SUPPORT
+   Ensure high-contrast, perfectly legible dark text
+   ======================================================== */
+.theme-light {
+    --color-default: #18121e;
+    color: #18121e !important;
+}
+
+.theme-light .text-color-default {
+    color: #18121e !important;
+}
+
+.theme-light p {
+    color: #2b2135 !important;
+}
+
+.theme-light h1,
+.theme-light h2,
+.theme-light h3,
+.theme-light h4,
+.theme-light h5,
+.theme-light h6 {
+    color: #18121e;
+}
+
+.theme-light .spooky-card,
+.theme-light .spooky-liquid-card {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border: 1px solid rgba(234, 88, 12, 0.4) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 0 20px rgba(234, 88, 12, 0.1) !important;
+    color: #18121e !important;
+}
+
+.theme-light .spooky-card p,
+.theme-light .spooky-liquid-card p,
+.theme-light .spooky-card span,
+.theme-light .spooky-liquid-card span {
+    color: #2b2135 !important;
+}
+
+.theme-light .post-content,
+.theme-light .post-content p,
+.theme-light .post-content li {
+    color: #1f1a26 !important;
+}
+
+.theme-light .blog-wall-content {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border: 1px solid rgba(234, 88, 12, 0.4) !important;
+    color: #18121e !important;
+}
+
+.theme-light .blog-wall-content p {
+    color: #2b2135 !important;
 }

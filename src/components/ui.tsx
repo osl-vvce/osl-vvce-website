@@ -1,36 +1,20 @@
 import React, { useState } from "react"
-import { Link } from "./utils"
+import HalloweenBannerButton from "./halloween-banner-button"
 
-type ButtonProps = { title: string, to?: string, type?: any, label?: string, disabled?: boolean, iconLeft?: JSX.Element, iconRight?: JSX.Element };
+type ButtonProps = {
+    title: string
+    to?: string
+    type?: any
+    label?: string
+    disabled?: boolean
+    iconLeft?: JSX.Element
+    iconRight?: JSX.Element
+    onClick?: (e: React.MouseEvent) => void
+    className?: string
+}
+
 const Button: React.FC<ButtonProps> = props => {
-    const { title, to, type, label, disabled } = props
-
-    let innerComponents = (
-        <React.Fragment>
-            {props.iconLeft && (
-                <span className="icon icon-left">{props.iconLeft}</span>
-            )}
-            <span>{props.title}</span>
-            {props.iconRight && (
-                <span className="icon icon-right">{props.iconRight}</span>
-            )}
-        </React.Fragment>
-    )
-
-
-    if(type) {
-        const b = type.split(",");
-        const t = b[1] ? b[1] : "button"
-        const dis = disabled === undefined ? false: disabled
-        if (b[0] === "button") {
-            return <button type={t} disabled={dis} className={`btn btn-primary${dis ? ' disabled' : ''}`}>{innerComponents}</button>
-        }
-    }
-    return (
-        <Link to={to} className="btn btn-primary" title={label || title}>
-            {innerComponents}
-        </Link>
-    )
+    return <HalloweenBannerButton {...props} />
 }
 
 const TextInput = ({ label, type = "text", name, onChange, footer }) => {

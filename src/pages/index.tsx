@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from "react"
+import React from "react"
 import { graphql, PageProps } from "gatsby"
 
-import { ArrowRight } from "react-feather"
 import ScrollIntoView from "react-scroll-into-view"
 
 import Layout from "../components/layout"
@@ -11,6 +10,7 @@ import ItemPortfolio from "../components/item-portfolio"
 import ItemBlog from "../components/item-blog"
 import { Description as ContactDescription } from "../components/contact"
 import { IndexPageQuery } from "./__generated__/IndexPageQuery"
+import SpookyCard from "../components/spooky-card"
 
 export default ({ data, location }: PageProps<IndexPageQuery>) => {
     const siteData = data.site.siteMetadata
@@ -49,136 +49,89 @@ export default ({ data, location }: PageProps<IndexPageQuery>) => {
 }
 
 const Wall = ({ data }) => {
-    const wall = useRef(null)
-
-    const twoColumnWall = data.twoColumnWall
-
-    const [state, changeState] = useState({
-        loaded: false,
-        supportsBlend: false,
-    })
-
-    useEffect(() => {
-        if (window.CSS && !state.loaded) {
-            if (CSS.supports("mix-blend-mode", "screen")) {
-                wall.current.classList.add("supports-blend")
-                changeState({
-                    loaded: true,
-                    supportsBlend: true,
-                })
-            }
-        }
-    }, [state.loaded])
-
-    let spanAttrs: Partial<{ style: unknown }> = {}
-
-    if (!twoColumnWall && data.titleImage) {
-        spanAttrs.style = {
-            backgroundImage: `url('${data.titleImage}')`,
-        }
-    }
-
-    const innerComponents = (
-        <React.Fragment>
-            <div className="title bg-bg">
-                <h1
-                    className={`text-6xl relative lg:text-7xl ${
-                        data.capitalizeTitleOnHome ? "uppercase" : ""
-                    }`}
-                >
-                    <span {...spanAttrs}></span>
-                    {data.title}
-                </h1>
-            </div>
-            <p className="text-2xl lg:text-4xl text-color-2 pt-4 lg:pt-0">
-                {data.introTag}
-            </p>
-            <p className="text-base lg:text-lg mt-4">{data.description}</p>
-            <ScrollIntoView selector="#portfolio">
-                <Button
-                    title="SEE BLOGS"
-                    type="button"
-                    iconRight={<ArrowRight />}
-                />
-            </ScrollIntoView>
-        </React.Fragment>
-    )
-
-    if (twoColumnWall) {
-        return (
-            <div
-                className="wall h-screen flex relative justify-center items-center overflow-hidden"
-                ref={wall}
-            >
-                <div className="flex-1 lg:block absolute lg:relative w-full h-full top-0 left-0">
-                    <div
-                        className="absolute left-0 top-0 w-full h-full lg:hidden"
-                        style={{
-                            background: "rgba(0,0,0,.75)",
-                        }}
-                    ></div>
-                    <img
-                        src={data.titleImage}
-                        alt=""
-                        className="h-full w-auto max-w-none lg:h-auto lg:w-full"
-                    />
-                </div>
-                <div className="flex-1 text-center p-3 relative z-10 lg:text-left lg:pl-8 text-white lg:text-color-default">
-                    {innerComponents}
-                </div>
-            </div>
-        )
-    }
-
     return (
-        <div
-            className="wall h-screen flex flex-col justify-center items-center text-center"
-            ref={wall}
-        >
-            {innerComponents}
+        <div className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 pt-36 sm:pt-40 pb-20 overflow-hidden">
+            {/* Floating glowing ember sparks */}
+            <div className="absolute inset-0 pointer-events-none z-1 overflow-hidden">
+                <span className="ember-particle" style={{ left: "10%", bottom: "10%", width: "6px", height: "6px", animationDelay: "0s" }}></span>
+                <span className="ember-particle" style={{ left: "25%", bottom: "5%", width: "4px", height: "4px", animationDelay: "1.5s" }}></span>
+                <span className="ember-particle" style={{ left: "45%", bottom: "15%", width: "8px", height: "8px", animationDelay: "0.7s" }}></span>
+                <span className="ember-particle" style={{ left: "65%", bottom: "8%", width: "5px", height: "5px", animationDelay: "2.3s" }}></span>
+                <span className="ember-particle" style={{ left: "80%", bottom: "12%", width: "7px", height: "7px", animationDelay: "1.1s" }}></span>
+                <span className="ember-particle" style={{ left: "90%", bottom: "20%", width: "4px", height: "4px", animationDelay: "2.8s" }}></span>
+            </div>
+
+            {/* Hero Content */}
+            <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+                {/* Spooky Headline */}
+                <h1 className="font-spooky spooky-headline text-4xl sm:text-6xl lg:text-7xl font-black leading-tight tracking-wide mb-6">
+                    We Do Frightfully Awesome Things!
+                </h1>
+
+                {/* Subtitle */}
+                <p
+                    className="hero-spooky-subtitle font-spooky font-bold text-xl sm:text-2xl max-w-3xl mx-auto mb-8 leading-relaxed tracking-wide"
+                    style={{
+                        color: "#ffeedb",
+                        textShadow: "0 2px 10px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 160, 20, 0.55)",
+                    }}
+                >
+                    {data.description}
+                </p>
+
+                {/* Action Buttons */}
+                <div className="flex flex-wrap items-center justify-center gap-4">
+                    <ScrollIntoView selector="#portfolio">
+                        <Button
+                            title="EXPLORE THE COVEN OF CODE"
+                            type="button"
+                        />
+                    </ScrollIntoView>
+                </div>
+            </div>
         </div>
     )
 }
 
 const About = ({ data }) => {
     return (
-        <div className="boxed">
-            <div className="px-4 py-20 text-center lg:py-10 lg:px-0">
-                <h2 className="text-color-1 font-black text-5xl lg:text-6xl">
-                    About
+        <div className="boxed my-20">
+            <SpookyCard className="text-center max-w-4xl mx-auto">
+                <h2 className="font-spooky spooky-headline font-black text-3xl sm:text-4xl md:text-5xl mb-6">
+                    ABOUT OSL VVCE
                 </h2>
-                <p className="mt-5 text-lg">{data}</p>
-            </div>
+                <p className="text-base sm:text-lg max-w-3xl mx-auto leading-relaxed font-medium text-orange-100/90">
+                    {data}
+                </p>
+            </SpookyCard>
         </div>
     )
 }
 
 const Blog = ({ children }) => {
     return (
-        <div className="container mx-auto px-0">
-            <div className="pt-20 pb-10 text-center lg:pt-40 lg:pb-20">
-                <h2 className="text-color-1 font-black text-5xl lg:text-6xl">
-                    Blog
+        <div className="container mx-auto px-4 my-20" id="blog">
+            <div className="text-center mb-12">
+                <h2 className="font-spooky spooky-headline font-black text-4xl sm:text-5xl">
+                    SPOOKY BLOGS & DISPATCHES
                 </h2>
             </div>
-            <div className="flex flex-wrap">{children}</div>
+            <div className="flex flex-wrap -mx-3">{children}</div>
         </div>
     )
 }
 
 const Contact = ({ data }) => {
     return (
-        <div className="container mx-auto">
-            <div className="pt-20 pb-10 lg:pt-40 lg:pb-20 text-center">
-                <h2 className="text-color-1 font-black text-5xl lg:text-6xl">
-                    Contact
+        <div className="container mx-auto px-4 my-24">
+            <div className="text-center mb-10">
+                <h2 className="font-spooky spooky-headline font-black text-4xl sm:text-5xl">
+                    GET IN TOUCH
                 </h2>
             </div>
-            <div className="flex flex-wrap pb-40">
-                <div className="w-full lg:w-2/3 mx-auto px-6 pt-8">
-                    <ContactDescription data={data} />
-                </div>
-            </div>
+            <SpookyCard className="max-w-3xl mx-auto">
+                <ContactDescription data={data} />
+            </SpookyCard>
         </div>
     )
 }

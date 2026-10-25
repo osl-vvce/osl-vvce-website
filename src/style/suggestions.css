@@ -1,33 +1,45 @@
-/* OSL VVCE Suggestions and Queries Page - Integrated with Main Website Theme 1*/
+/* ========================================================
+   OSL VVCE SUGGESTIONS & QUERIES - HALLOWEEN LIQUID MORPHISM THEME
+   Integrated with Haunted Realm Aesthetic: Frosted Obsidian Glass,
+   Glowing Pumpkin Accents, Cinzel Gothic Typography & Razor-Sharp Contrast
+   ======================================================== */
 
 .Suggestions-page {
     min-height: 100vh;
-    padding: 2rem 0;
+    padding: 3rem 0 5rem;
+    position: relative;
+    z-index: 10;
 }
 
 .Suggestions-content-wrapper {
-    max-width: 42rem;
+    max-width: 44rem;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 1.25rem;
 }
 
 /* Header Section */
 .Suggestions-header-section {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .Suggestions-logo-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 .Suggestions-logo {
-    width: 5rem;
-    height: 5rem;
+    width: 5.5rem;
+    height: 5.5rem;
     object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.6)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.9));
+    transition: transform 0.3s ease;
+}
+
+.Suggestions-logo:hover {
+    transform: scale(1.06) rotate(-2deg);
 }
 
 .Suggestions-title-section {
@@ -37,27 +49,48 @@
 }
 
 .Suggestions-page-title {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: var(--text-color);
+    font-size: 2.6rem;
+    font-family: "Cinzel", Georgia, serif !important;
+    font-weight: 900 !important;
+    background: linear-gradient(180deg, #ffffff 15%, #fff6db 45%, #fed7aa 72%, #fb923c 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #ffffff !important;
+    letter-spacing: 0.04em !important;
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(255, 140, 0, 0.45)) !important;
+    display: inline-block;
 }
 
 .Suggestions-subtitle {
-    font-size: 1.125rem;
-    color: var(--text-color);
-    opacity: 0.75;
+    font-size: 1.1rem;
+    color: #fed7aa !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95);
+    font-weight: 500;
 }
 
-/* Form Container */
+/* Form Container - Liquid Frosted Obsidian Glass */
 .Suggestions-form-container {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 1rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(
+        160deg,
+        rgba(24, 10, 32, 0.94) 0%,
+        rgba(18, 8, 26, 0.96) 45%,
+        rgba(10, 4, 16, 0.98) 100%
+    ) !important;
+    border: 1px solid rgba(255, 175, 75, 0.4) !important;
+    border-radius: 1.75rem !important;
+    box-shadow: 
+        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.3),
+        inset 0 0 35px rgba(255, 120, 0, 0.08),
+        0 24px 60px -10px rgba(0, 0, 0, 0.95),
+        0 0 35px rgba(255, 110, 0, 0.2) !important;
+    backdrop-filter: blur(28px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
     overflow: hidden;
     position: relative;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Pumpkin Fire Glowing Top Accent Line */
 .Suggestions-form-container::before {
     content: '';
     position: absolute;
@@ -65,111 +98,132 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(90deg, #ea580c 0%, #f97316 45%, #facc15 75%, #ea580c 100%) !important;
+    box-shadow: 0 0 14px rgba(249, 115, 22, 0.85);
+    z-index: 5;
 }
 
 /* Form Styles */
 .Suggestions-form {
-    padding: 2rem;
+    padding: 2.25rem 2.5rem;
     position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 640px) {
+    .Suggestions-form {
+        padding: 1.5rem 1.25rem;
+    }
 }
 
 /* Form Rows */
 .form-row {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.6rem;
 }
-
-
-
-
 
 .input-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.55rem;
 }
 
-/* Input Labels */
+/* Input Labels - Golden Amber Gothic */
 .Suggestions-form label {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text-color);
-    opacity: 0.75;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-family: "Cinzel", Georgia, serif !important;
+    font-weight: 700 !important;
+    color: #fed7aa !important;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
 .Suggestions-form label i {
-    color: var(--primary-color);
-    width: 1rem;
+    color: #ff9900 !important;
+    filter: drop-shadow(0 0 6px rgba(255, 153, 0, 0.7));
+    width: 1.1rem;
     text-align: center;
+    font-size: 0.95rem;
 }
 
-/* Input Fields */
+/* Input Fields - Spooky Deep Plum with Amber Border Glow */
 .Suggestions-form input[type="text"],
 .Suggestions-form input[type="email"],
-.Suggestions-form textarea {
+.Suggestions-form textarea,
+.Suggestions-form select {
     width: 100%;
-    padding: 0.75rem 1rem;
-    background: var(--input-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 0.5rem;
-    color: var(--text-color);
-    font-size: 1rem;
-    transition: all 0.2s ease;
+    padding: 0.85rem 1.15rem;
+    background: rgba(14, 6, 22, 0.9) !important;
+    border: 1px solid rgba(255, 140, 0, 0.35) !important;
+    border-radius: 0.75rem !important;
+    color: #fffdf5 !important;
+    font-size: 1.02rem;
+    font-family: "Plus Jakarta Sans", "Raleway", sans-serif;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     outline: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .Suggestions-form input::placeholder,
 .Suggestions-form textarea::placeholder {
-    color: var(--text-color);
-    opacity: 0.5;
+    color: rgba(254, 215, 170, 0.42) !important;
     font-style: italic;
 }
 
 .Suggestions-form input:focus,
-.Suggestions-form textarea:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+.Suggestions-form textarea:focus,
+.Suggestions-form select:focus {
+    border-color: #f97316 !important;
+    box-shadow: 0 0 18px rgba(249, 115, 22, 0.4), inset 0 0 8px rgba(249, 115, 22, 0.15) !important;
+    background: rgba(22, 9, 32, 0.98) !important;
     transform: translateY(-1px);
 }
 
 /* Textarea Specific */
 .Suggestions-form textarea {
     resize: vertical;
-    min-height: 5rem;
-    line-height: 1.6;
+    min-height: 5.5rem;
+    line-height: 1.65;
 }
 
 /* Form Actions */
 .form-actions {
-    padding-top: 1.5rem;
+    padding-top: 1.75rem;
     text-align: center;
 }
 
-/* Submit Button */
+/* Submit Button - Moonbeam White to Golden-Amber Gothic Button */
 .submit-btn {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.75rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
+    background: linear-gradient(180deg, #ffffff 0%, #fff6db 30%, #fed7aa 70%, #fb923c 100%) !important;
+    color: #0c0712 !important;
+    border: 2px solid #000000 !important;
+    border-radius: 9999px !important;
+    padding: 0.85rem 2.5rem !important;
+    font-family: "Cinzel", Georgia, serif !important;
+    font-size: 1.05rem !important;
+    font-weight: 800 !important;
     cursor: pointer;
-    transition: all 0.2s ease;
-    min-width: 12rem;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 14rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.09em;
+    box-shadow: 0 0 25px rgba(254, 215, 170, 0.45), 0 8px 25px rgba(0, 0, 0, 0.85) !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
 }
 
 .submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px 0 rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px) scale(1.03);
+    background: linear-gradient(180deg, #ffffff 0%, #ffffff 35%, #fef3c7 70%, #fed7aa 100%) !important;
+    border-color: #000000 !important;
+    box-shadow: 0 0 35px rgba(254, 215, 170, 0.75), 0 12px 30px rgba(0, 0, 0, 0.9) !important;
+    color: #0c0712 !important;
 }
 
 .submit-btn:active {
@@ -180,108 +234,44 @@
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
+    box-shadow: none !important;
 }
 
 .submit-btn i {
-    margin-right: 0.5rem;
+    color: #0c0712 !important;
+    filter: none !important;
 }
 
 /* Submit Message */
 .submit-message {
-    margin-top: 1rem;
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
+    margin-top: 1.25rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
     text-align: center;
+    font-size: 1rem;
+    backdrop-filter: blur(12px);
 }
 
 .submit-message.success {
-    background-color: #d1fae5;
-    color: #065f46;
-    border: 1px solid #a7f3d0;
+    background: rgba(20, 83, 45, 0.9) !important;
+    color: #f0fdf4 !important;
+    border: 1px solid #4ade80 !important;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
 .submit-message.error {
-    background-color: #fee2e2;
-    color: #991b1b;
-    border: 1px solid #fca5a5;
+    background: rgba(127, 29, 29, 0.9) !important;
+    color: #fef2f2 !important;
+    border: 1px solid #f87171 !important;
+    box-shadow: 0 0 15px rgba(248, 113, 113, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
-/* CSS Custom Properties */
-:root {
-    --primary-color: #3b82f6;
-    --secondary-color: #8b5cf6;
-    --primary-rgb: 59, 130, 246;
-    --text-color: var(--text-primary, #1f2937);
-    --card-bg: var(--card-bg-color, #ffffff);
-    --input-bg: var(--input-bg-color, #f9fafb);
-    --border-color: var(--border-color-primary, #e5e7eb);
-}
-
-/* Theme Support */
-.theme-light {
-    --text-color: var(--color-default, #1f2937);
-    --card-bg: var(--bg, #ffffff);
-    --input-bg: var(--bg-alt, #f9fafb);
-    --border-color: var(--border-color-default, #e5e7eb);
-}
-
-.theme-dark {
-    --text-color: var(--color-default, #f9fafb);
-    --card-bg: var(--bg, #1f2937);
-    --input-bg: var(--bg-alt, #374151);
-    --border-color: var(--border-color-default, #4b5563);
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-    .Suggestions-content-wrapper {
-        padding: 0 1rem;
-    }
-    
-    .Suggestions-logo {
-        width: 4rem;
-        height: 4rem;
-    }
-    
-    .Suggestions-page-title {
-        font-size: 1.875rem;
-    }
-    
-    .Suggestions-form {
-        padding: 1.5rem;
-    }
-    
-    .form-row.two-columns {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
     .submit-btn {
         width: 100%;
         min-width: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .Suggestions-logo {
-        width: 3rem;
-        height: 3rem;
-    }
-    
-    .Suggestions-page-title {
-        font-size: 1.5rem;
-    }
-    
-    .Suggestions-form {
-        padding: 1rem;
-    }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        transition: none !important;
-        animation: none !important;
     }
 }

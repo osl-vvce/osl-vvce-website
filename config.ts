@@ -4,10 +4,10 @@ const siteMetadata = {
     capitalizeTitleOnHome: true,
     logo: `/images/logo.webp`,
     icon: `/images/icon.png`,
-    titleImage: `/images/wall3.jpg`,
-    ogImage: `/images/wall.png`,
+    titleImage: `/images/halloween-wall.jpg`,
+    ogImage: `/images/halloween-wall.jpg`,
     twoColumnWall: false,
-    introTag: `We do Awesome Things!`,
+    introTag: `Unleash The Spooktacular Code`,
     description: `OSL is a community of passionate college students, who have come together for the cause of promoting and contributing to Free and Open Source.`,
     about:
         "OSL, a student-run community with over 20+ members from Vidyavardhaka College of Engineering, Mysuru, over the last 2 years, has helped 100+ passionate students to transform into successful & innovative engineers who today work across the world in Fortune 500 Companies loving what they do.",

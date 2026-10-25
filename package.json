@@ -9,6 +9,7 @@
     "build": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" gatsby build",
     "develop": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "dev": "npm run develop",
     "start": "npm run develop",
     "serve": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" gatsby serve",
     "clean": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" gatsby clean",

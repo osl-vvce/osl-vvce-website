@@ -114,6 +114,7 @@ const VisitorLogbookLogs: React.FC<{ location: WindowLocation }> = ({
           <div className="logbook-form-container visitor-logs-fullcontainer">
             <div className="logbook-action-row">
               <Link to="/visitor-logbook" className="secondary-btn">
+                <i className="fas fa-arrow-left mr-2"></i>
                 Back to visitor check-in
               </Link>
             </div>

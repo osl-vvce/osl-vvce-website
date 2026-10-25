@@ -212,10 +212,10 @@ const suggestions: React.FC<suggestionsProps> = ({ location }) => {
                                     className="submit-btn"
                                     disabled={submitting}
                                 >
-                                    <i className="fas fa-sign-in-alt"></i>
+                                    <i className="fas fa-paper-plane mr-2"></i>
                                     {submitting
                                         ? "Submitting..."
-                                        : "Submit Entry"}
+                                        : "Submit Suggestion"}
                                 </button>
                                 {submitMessage && (
                                     <div

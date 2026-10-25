@@ -27,33 +27,34 @@ export default function blog({ location, data }: PageProps<BlogQuery, {}>) {
                         fluid={
                             data.mdx.frontmatter.banner.childImageSharp.fluid
                         }
+                        className="rounded-2xl overflow-hidden shadow-2xl"
                     />
-                    <div className="relative w-full lg:w-3/4 md:w-11/12 sm:w-full p-6 box-border lg:box-content mx-auto bg-bg text-color-default blog-wall-content shadow-xl md:-mt-16 ">
-                        <div className="p-3">
-                            <h1 className="text-5xl font-bold text-primary">
+                    <div className="relative w-full lg:w-3/4 md:w-11/12 sm:w-full p-6 sm:p-8 box-border mx-auto blog-wall-content shadow-2xl md:-mt-16 z-10">
+                        <div className="p-2 sm:p-3">
+                            <h1 className="text-3xl sm:text-5xl font-black font-spooky spooky-headline">
                                 {data.mdx.frontmatter.title}
                             </h1>
-                            <p className="mt-1 flex">
-                                <Calendar />{" "}
-                                <span className="ml-2">
+                            <p className="mt-2 flex items-center text-orange-300 text-sm">
+                                <Calendar className="w-4 h-4 mr-2" />{" "}
+                                <span>
                                     {data.mdx.frontmatter.date}
                                 </span>
                             </p>
-                            <p className="mt-3">
+                            <p className="mt-3 text-orange-100/90 leading-relaxed font-medium">
                                 {data.mdx.frontmatter.description}
                             </p>
                         </div>
                     </div>
                 </div>
                 <div
-                    className="lg:w-3/4 md:w-11/12 sm:w-full p-3 mx-auto post-content text-lg"
+                    className="lg:w-3/4 md:w-11/12 sm:w-full mx-auto post-content text-lg relative z-10"
                     id="mdx"
                 >
                     <MDXProvider components={{ Row, Col }}>
                         <MDXRenderer>{data.mdx.body}</MDXRenderer>
                     </MDXProvider>
                 </div>
-                <div className="comments mt-8">
+                <div className="comments lg:w-3/4 md:w-11/12 sm:w-full mx-auto mt-8 mb-16 relative z-10">
                     <Comments
                         title={data.mdx.frontmatter.title}
                         location={location}

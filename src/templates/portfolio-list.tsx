@@ -25,9 +25,9 @@ export default function portfolioList({ data, pageContext, location }: PageProps
         >
             <div className="py-12 px-4 lg:px-0">
                 <div className="title py-8 text-center">
-                    <h2 className="font-black text-5xl text-color-1">
+                    <h1 className="font-spooky spooky-headline text-4xl sm:text-6xl font-black tracking-wider">
                         Portfolio
-                    </h2>
+                    </h1>
                 </div>
                 <div className="flex flex-wrap">{portfolioItems}</div>
                 <div className="mt-8 lg:mt-24">

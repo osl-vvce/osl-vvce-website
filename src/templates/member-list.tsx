@@ -22,14 +22,14 @@ export default function memberList({ data, pageContext, location }) {
         >
             <div className="container mx-auto py-12">
                 <div className="title py-12 text-center">
-                    <h2 className="font-black text-5xl text-color-1">
+                    <h1 className="font-spooky spooky-headline text-4xl sm:text-6xl font-black tracking-wider">
                         Current Members
-                    </h2>
+                    </h1>
                 </div>
                 <div className="flex flex-wrap">{currentMemberItems}</div>
                 
                 <div className="title py-12 text-center mt-12">
-                    <h2 className="font-black text-5xl text-color-1">
+                    <h2 className="font-spooky spooky-headline text-3xl sm:text-5xl font-black tracking-wider">
                         Former Members
                     </h2>
                 </div>
