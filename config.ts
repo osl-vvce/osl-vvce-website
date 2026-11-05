@@ -40,6 +40,10 @@ const siteMetadata = {
             url: "/members",
         },
         {
+            name: "ACTIVE PEOPLE",
+            url: "/active-people",
+        },
+        {
             name: "CONTACT",
             url: "/contact",
         },

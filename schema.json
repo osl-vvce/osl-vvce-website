@@ -3641,31 +3641,21 @@
               "defaultValue": null
             },
             {
-              "name": "tagline",
-              "description": "",
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "StringQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "about",
-              "description": "",
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "StringQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "role",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
                 "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "batch",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "IntQueryOperatorInput",
                 "ofType": null
               },
               "defaultValue": null
@@ -3681,11 +3671,21 @@
               "defaultValue": null
             },
             {
-              "name": "batch",
+              "name": "tagline",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "IntQueryOperatorInput",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "about",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
                 "ofType": null
               },
               "defaultValue": null
@@ -3742,6 +3742,16 @@
             },
             {
               "name": "tinkdin",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "telegram",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -8283,36 +8293,24 @@
               "deprecationReason": null
             },
             {
-              "name": "tagline",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "about",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "role",
               "description": null,
               "args": [],
               "type": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "batch",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -8331,12 +8329,24 @@
               "deprecationReason": null
             },
             {
-              "name": "batch",
+              "name": "tagline",
               "description": null,
               "args": [],
               "type": {
                 "kind": "SCALAR",
-                "name": "Int",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "about",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -8404,6 +8414,18 @@
             },
             {
               "name": "tinkdin",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "telegram",
               "description": null,
               "args": [],
               "type": {
@@ -10588,19 +10610,13 @@
               "deprecationReason": null
             },
             {
-              "name": "childMdx___frontmatter___tagline",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "childMdx___frontmatter___about",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "childMdx___frontmatter___role",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childMdx___frontmatter___batch",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -10612,7 +10628,13 @@
               "deprecationReason": null
             },
             {
-              "name": "childMdx___frontmatter___batch",
+              "name": "childMdx___frontmatter___tagline",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childMdx___frontmatter___about",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -10649,6 +10671,12 @@
             },
             {
               "name": "childMdx___frontmatter___tinkdin",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childMdx___frontmatter___telegram",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -14360,6 +14388,16 @@
               "defaultValue": null
             },
             {
+              "name": "author",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "license",
               "description": "",
               "type": {
@@ -15387,6 +15425,18 @@
             },
             {
               "name": "main",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "author",
               "description": null,
               "args": [],
               "type": {
@@ -16696,6 +16746,12 @@
             },
             {
               "name": "pluginCreator___packageJson___main",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginCreator___packageJson___author",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -22331,19 +22387,13 @@
               "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
             },
             {
-              "name": "frontmatter___tagline",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "frontmatter___about",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "frontmatter___role",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "frontmatter___batch",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -22355,7 +22405,13 @@
               "deprecationReason": null
             },
             {
-              "name": "frontmatter___batch",
+              "name": "frontmatter___tagline",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "frontmatter___about",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -22392,6 +22448,12 @@
             },
             {
               "name": "frontmatter___tinkdin",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "frontmatter___telegram",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -25227,6 +25289,12 @@
             },
             {
               "name": "packageJson___main",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "packageJson___author",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
