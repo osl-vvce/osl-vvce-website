@@ -6,7 +6,7 @@
   "author": "OSL@VVCE <osl@vvce.ac.in>",
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
